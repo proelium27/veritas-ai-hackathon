@@ -6,9 +6,9 @@ Source: the "Our plan" tab of the team Google Doc, cleaned up. Where the doc gav
 
 - Tracks: Health, Finance, Climate, Languages (pick one). Full brief in [challenge.md](challenge.md).
 - Challenge: one AI project for one track. Show who it's for, input → output, a baseline comparison, and where it fails. Suggested projects are fine, but we must add our own user, data or question.
-- Track: (team decides)
-- Idea: (team decides)
-- Dataset or model (with link and license): (team decides)
+- Track: AI + Health
+- Idea: Hidden Allergen Checker. Helps a kid with a peanut allergy by taking an ingredient list and giving back "looks safe" or "check this one". Baseline: keyword search for "peanut". Model: TF-IDF + logistic regression. Our angle: train on English labels, test on French and Spanish labels, then fix by retraining with more languages.
+- Dataset: Open Food Facts (https://world.openfoodfacts.org), ODbL license. Loading route still being decided; see docs/log.md, Sat 10:15 AM.
 - Where to submit: the Airtable form at https://airtable.com/appypCyHN77hElIcS/shrXA5VBFdugmoXl6. One person submits; resubmitting is allowed.
 
 ## Who does what
