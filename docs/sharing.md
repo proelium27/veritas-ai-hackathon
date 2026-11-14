@@ -15,11 +15,11 @@ Times are Eastern. "Group chat" means whatever chat the team picks.
 
 | Share | How |
 |---|---|
-| Challenge brief | Whoever sees the email first forwards it to the group chat, and to the commander session (paste it in). |
-| Starter kit and submission info | Forward the starter kit email to the chat. The commander adds the submission details to docs/competition.md. |
+| Challenge brief | Share the briefs PDF link from highschoolhackathon.org/briefs in the group chat (the commander's summary is in docs/challenge.md). |
+| Submission form | Share the Airtable form link from the same page, so everyone knows where it is. |
 | GitHub repo | The commander creates the private repo and sends invites to the usernames. Tell teammates: "Accept the GitHub invite email, then check the repo opens." |
 | The plan | Once the idea is picked, share the decision in the chat: track, idea, dataset link, who does what, next check-in time. The commander writes it into docs/plan.md in the repo. |
-| Notebook link | Teammate 2 (notebook owner) opens `notebook/model.ipynb` from GitHub in Colab. Everyone else makes their own copy (File › Save a copy in Drive). |
+| Notebook link | Whoever the team picks as notebook owner opens `notebook/model.ipynb` from GitHub in Colab. Everyone else makes their own copy (File › Save a copy in Drive). |
 
 ## During the weekend
 
@@ -32,7 +32,7 @@ Times are Eastern. "Group chat" means whatever chat the team picks.
 | Share | How |
 |---|---|
 | Write-up draft | Shared Google Doc, all three edit; final copy goes in `docs/writeup.md`. |
-| Video | Teammate 3 uploads to YouTube as **Unlisted** and posts the link in the chat. |
+| Video (optional, recommended) | One of us uploads it to YouTube as **Unlisted** and posts the link in the chat. |
 | Final links | Caleb makes the repo public (Settings › General › Change visibility), then posts the repo link and the Colab link. Everyone opens them in a signed-out private window to check. |
 | Submission | One person submits by 10:59 PM and posts a screenshot of the confirmation in the chat. |
 
