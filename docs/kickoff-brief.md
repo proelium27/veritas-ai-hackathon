@@ -35,6 +35,12 @@ Why these scores, briefly:
 - **Loan fairness** is a good honesty story, but 1994 German data makes the user hard to picture.
 - **Scam filter** scores well on everything except originality, and originality is what kills it.
 
+## Checked with other AIs (Sat 9:30 AM)
+
+Three separate AI models (Sonnet) were asked for ideas from the brief alone, without seeing this file. All three suggested the heart-across-hospitals idea and the Malay-vs-Indonesian language ID idea, partly because the brief prints those angles itself, so other teams will likely build them. Two of the three ranked a heat warning for a school coach (Open-Meteo weather, "tomorrow = today" baseline) as their top pick. Two also said heart disease is the weakest on originality, since it's a heavily used tutorial dataset, so its Originality score above is probably too high.
+
+What no AI can copy is the part only we have: a language one of us speaks, our own school and town, or a real person we know. **Ask about those first on the call**, and pick the idea someone has a personal hook for. With no hook, the heat warning for our own school is the freshest beginner-friendly option.
+
 ## Recommendation
 
 **Pick: heart disease risk across hospitals (Health).**
