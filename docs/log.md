@@ -32,12 +32,32 @@ Format: `Day time ET — who — what happened / numbers / why`.
   - Takeaway: beam 32 is worth it (cheap, +6 rows, mostly woman speakers), but it isn't enough on its own: 5 rows still have no fit, and meaning still needs a human check. Repair rules or a "had to guess" flag are still needed.
 - Sat Nov 14, evening — team — Test set finished in the Google Sheet and pulled into `data/test_sentences.csv`: 60 rows (15 practice, 45 test), English meanings by David, Serbian (Latin) by Adam. A read-through found typos and one meaning mismatch (t41: English and Serbian had drifted from the Mandarin, and used informal for a formal row); the team fixed them. Checker: no errors. Two missing accent marks remain (t07 odecu, t32 Znas). Adam's practice review tabs and rule/repair drafts are in the Sheet.
 
+- Sat Nov 14, evening — commander (side session) — **Phase 4: picker built from Adam's checked rules** (`notebook/model.ipynb` section 6), run top to bottom locally with 0 errors on **CPU, 79 s wall-clock, peak kernel memory about 1.9 GB** (NLLB one sentence at a time, OPUS 4 at a time). Not yet run in Colab. Scored on the **15 practice rows only**; the 45 test rows are translated but stay hidden and unscored.
+  - What Adam changed in the AI drafts (Sheet tabs "Rules draft" and "Repair table draft"): marked every row correct, with fixes that are all in the code: *sam* can mean "alone", stop the look-ahead after *da/što/koji/koja/kad/ali*; more not-a-verb words (*žao, zao, sto*); man-only adjectives like *veseo, topao, beo* count as signs; describing words can come **before** *sam* (*Umorna sam*), plus *sam/sama*; future tense and *moram* show no gender; *Zar nisi…?*; more *Vaš/tvoj* forms; *-š* look-alikes (*još, baš, naš, loš, keš, Vaš*); more *-te* nouns (*karte, minute, kante*); commands checked on the first word only, plus *nemoj/nemojte*; irregular past forms (*-kao/-gao/-šao*) must be a fixed word list, with more words (*prošao, sišao, išao, tekao, vukao, sekao, legao*, and *obuo, izuo, radostan, ljut*); subject *ti* becomes *Vi* but short "to you" *ti* becomes *Vam*. In "Practice options (Adam)" Adam filled in "meaning right?" for all 46 options; the "ending right?" column is still the AI's grey guesses and the notes column is empty.
+  - The Sentences tab equals `data/test_sentences.csv` cell for cell, so no CSV change. **t07 "odecu" and t32 "Znas" are still not fixed in the Sheet** (both test rows). Checker: no errors.
+  - Checks: `detect()` passes 36 hand tests from Adam's rule sheet and reads all **15 of 15** of our own correct practice sentences right; `repair()` passes 28 hand tests. One known limit: "Doći ću sutra" (future tense) is read as a casual command because the first word ends in -i.
+  - Practice results (15 rows, flattering by design because the rules were written on them):
+
+| System | chrF | exact match | gender correct | formality correct | all tested endings right (14 non-control rows) |
+|---|---|---|---|---|---|
+| Through English (baseline) | 54.5 | 0% | 71.4% (5/7, 3 can't tell) | 57.1% (4/7, 1 can't tell) | 7/14 |
+| NLLB direct | 35.6 | 0% | 57.1% (4/7, 3 can't tell) | 62.5% (5/8) | 7/14 |
+| NLLB + picker (ours) | 35.7 | 0% | 100% (9/9, 1 can't tell) | 100% (8/8) | 13/14 |
+
+  - Picker: right form somewhere in the 32 options 85.7% (12/14); matched 12, **repaired 1** (t01: *dodao → dodala*), **had to guess 1** (t22); flag accuracy 100% (14/14). That flag number is circular: "right" is judged by the same `detect()` the picker uses, so it doesn't check meaning.
+  - **Failures.** (1) t22 "Did you see my gloves?": all 32 options use the present tense (*Vidiš li moje rakavice?*), so the listener's gender can't show, and repair can't change the tense. The flag fires correctly. (2) **Right endings, wrong meaning:** against Adam's meaning column, only **6 of 15** picks mean the right thing (t03, t25, t26, t33, t49, t54), against 3 of 15 for NLLB direct. The wrong ones are *Spisao* (not a real verb, t02), *vinka* (non-word for forklift, t06), *Koliko* "how much" for "when" (t23), *javio* "got in touch" for "called" (t39), *detalje koje želite* "details you want" (t41), *požarnikare* for fire extinguisher (t52), *Posjednički odmor* for lunch break (t60), and *dodala dva sata u rad* (t01, repaired from a wrong-meaning option). The picker only reads endings, so it can't catch these. (3) **chrF: the baseline wins on wording** (54.5 against about 36). The picker fixes endings, but NLLB's word choice is further from our Serbian than the OPUS route's. Say this plainly in the write-up.
+  - **Device:** Apple's GPU (`mps`) was tried and dropped. On MPS, NLLB turned "I finished writing the report" into a repeating, broken sentence (*Površio sam da se javljam kao da se javljam…*) and took 12 s per sentence, against 0.9 s and the right answer on CPU. An earlier run with 16 sentences × 32 options per batch filled the 16 GB laptop's memory. The notebook now uses `cuda` (Colab) or `cpu`, with small batches and memory freed after each step.
+
 ## Experiments and results
 
 | When | Model / change | Data split | Metric(s) | Result | Notes |
 |---|---|---|---|---|---|
 | Sat Nov 14 ~1:45 PM | NLLB-600M, beam 8 / 16 / 32 / sample 16, rough Latin detectors | 54 non-control draft rows (practice + test) | % rows where some option fits; top option fits | 80% / 83% / 91% / 85%; top option 50% (woman speakers 0/12) | more_options.ipynb; AI-drafted sentences, rough detectors, no human Serbian yet |
+| Sat Nov 14 evening | Phase 4 picker (Adam's rules + repair) on NLLB top 32 | 15 practice rows | chrF; gender %; formality %; right form in 32; flag acc. | baseline 54.5 / 71% / 57%; direct 35.6 / 57% / 63%; picker 35.7 / 100% / 100%; right form in 32: 86%; flag 100% (circular) | Practice only (rules built on these). Meaning right for 6/15 picks per Adam. t22 had to guess. CPU, 79 s |
 
 ## Known failures and limits
 
--
+- The picker reads endings only: on the practice rows 8 of 15 picks have the right endings but the wrong meaning (Adam's check). See the Phase 4 entry.
+- Present-tense options can't show the listener's gender, and repair can't change the tense (t22).
+- `detect()` reads a first word ending in -i as a casual command, so "Doći ću" (future tense) counts as informal.
+- NLLB on Apple's GPU (`mps`) gave broken output, so local runs use the CPU.
