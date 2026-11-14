@@ -22,6 +22,7 @@ Format: `Day time ET — who — what happened / numbers / why`.
   - Through English, informal 你 became formal сте ("Да ли сте дошли"); NLLB direct kept informal си. That is the project's thesis showing up in the first test.
   - NLLB's options include wrong words: вчера (Russian/Bulgarian, not Serbian јуче), Проверил (Russian form), Уключио (means "turned on", the opposite). The picker must not pick on endings alone; Adam should check meaning too.
   - The rough feminine check missed "Ја сам га искључила" (a word between сам and the verb), and the formal check missed "Јесте ли". Adam's real rules need those patterns.
+- Sat Nov 14, afternoon — commander — 60 test sentences drafted with AI (Mandarin + labels only; ids t01-t60, 15 practice / 45 test, 30 woman / 30 man speakers; categories: speaker_gender 18, formality 12, listener_gender+formality 12, listener_gender 6, speaker_gender+formality 6, control 6). Saved as `data/draft_mandarin_60.csv` and loaded into the Google Sheet "Lost in Translation: Test Sentences", shared with Adam and David as editors. Next: David reviews every sentence and writes the English meaning; Adam writes the Serbian.
 
 ## Experiments and results
 

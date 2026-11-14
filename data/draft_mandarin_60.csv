@@ -1,0 +1,61 @@
+id,mandarin,english_meaning,speaker_gender,listener_gender,formal,what_it_tests,correct_serbian,notes,split
+t01,我昨天加了两个小时的班。,,woman,man,yes,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,practice
+t02,我把报告写完了。,,man,woman,yes,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,practice
+t03,我已经到车间了。,,woman,woman,no,speaker_gender,,"No 'you' in sentence; listener and formality are just the scene. Keep 'arrived' in the past tense in Serbian (not 'I am already at...'), so the ending shows.",practice
+t04,我今天太累了。,,man,man,no,speaker_gender,,No 'you' in sentence; listener and formality are just the scene. Speaker gender shows in the adjective 'tired'.,test
+t05,我忘了带安全帽。,,woman,group,no,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t06,我刚才看见叉车撞到货架了。,,man,woman,yes,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,practice
+t07,我已经换好工作服了。,,woman,man,no,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t08,我昨天生病了。,,man,man,yes,speaker_gender,,No 'you' in sentence; listener and formality are just the scene. Speaker gender shows in 'was sick' (adjective and past verb).,test
+t09,我已经通知司机了。,,woman,woman,yes,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t10,我准备好了。,,man,group,no,speaker_gender,,No 'you' in sentence; listener and formality are just the scene. Speaker gender shows in the adjective 'ready'.,test
+t11,我把货物都清点完了。,,woman,man,yes,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t12,我上周去总部参加了培训。,,man,woman,no,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t13,我没听清楚。,,woman,man,yes,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t14,我已经把仓库门锁好了。,,man,group,yes,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t15,我今天早上迟到了。,,woman,woman,yes,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t16,我已经把数据录进系统了。,,man,man,no,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t17,我刚吃完午饭。,,man,woman,no,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t18,我已经把那台机器修好了。,,woman,group,no,speaker_gender,,No 'you' in sentence; listener and formality are just the scene.,test
+t19,你吃午饭了吗？,,man,woman,no,listener_gender,,,test
+t20,你是不是累了？,,woman,man,no,listener_gender,,Listener gender shows in the adjective 'tired'.,test
+t21,你把垃圾倒了吗？,,woman,woman,no,listener_gender,,,test
+t22,你看到我的手套了吗？,,man,man,no,listener_gender,,,practice
+t23,你昨天几点走的？,,man,woman,no,listener_gender,,,practice
+t24,你昨天跟主管说了吗？,,woman,man,no,listener_gender,,,test
+t25,您需要帮忙吗？,,man,woman,yes,formality,,"Pair with t26 (only 您/你 differs). No past tense or adjective about 'you', so listener gender doesn't show.",practice
+t26,你需要帮忙吗？,,man,woman,no,formality,,"Pair with t25 (only 您/你 differs). No past tense or adjective about 'you', so listener gender doesn't show.",practice
+t27,您明天能早点来吗？,,woman,man,yes,formality,,"Pair with t28 (only 您/你 differs). No past tense or adjective about 'you', so listener gender doesn't show.",test
+t28,你明天能早点来吗？,,woman,man,no,formality,,"Pair with t27 (only 您/你 differs). No past tense or adjective about 'you', so listener gender doesn't show.",test
+t29,请您在这里签字。,,man,man,yes,formality,,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t30,你先去休息吧。,,woman,woman,no,formality,,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t31,您知道仓库钥匙在哪儿吗？,,woman,woman,yes,formality,,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t32,你会开叉车吗？,,man,man,no,formality,,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t33,您要喝杯咖啡吗？,,woman,man,yes,formality,,"No past tense or adjective about 'you', so listener gender doesn't show.",practice
+t34,你下午几点下班？,,man,woman,no,formality,,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t35,您的包裹在门卫室。,,man,woman,yes,formality,,"No past tense or adjective about 'you', so listener gender doesn't show. Formality shows in 'your' (formal vs informal form).",test
+t36,你的工牌在这儿。,,woman,man,no,formality,,"No past tense or adjective about 'you', so listener gender doesn't show. Formality shows in 'your' (formal vs informal form).",test
+t37,我已经给您发过去了。,,woman,man,yes,speaker_gender+formality,,Pair with t38 (only 您/你 differs).,test
+t38,我已经给你发过去了。,,woman,man,no,speaker_gender+formality,,Pair with t37 (only 您/你 differs).,test
+t39,我刚才给您打过电话。,,man,woman,yes,speaker_gender+formality,,,practice
+t40,我帮你把箱子搬过来了。,,man,woman,no,speaker_gender+formality,,,test
+t41,我把您要的零件找到了。,,man,man,yes,speaker_gender+formality,,"'您要的' (that you asked for) uses formal plural, so only the speaker's gender shows.",practice
+t42,我已经跟你说过了。,,woman,woman,no,speaker_gender+formality,,,test
+t43,您看过这份报告了吗？,,man,woman,yes,listener_gender+formality,,"Pair with t44 (only 您/你 differs). Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t44,你看过这份报告了吗？,,man,woman,no,listener_gender+formality,,Pair with t43 (only 您/你 differs).,test
+t45,您签收那批货了吗？,,woman,man,yes,listener_gender+formality,,"Pair with t46 (only 您/你 differs). Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t46,你签收那批货了吗？,,woman,man,no,listener_gender+formality,,Pair with t45 (only 您/你 differs).,test
+t47,您已经到工厂了吗？,,man,woman,yes,listener_gender+formality,,"Pair with t48 (only 您/你 differs). Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t48,你已经到工厂了吗？,,man,woman,no,listener_gender+formality,,"Pair with t47 (only 您/你 differs). Keep 'arrived' in the past tense in Serbian (not 'are you already at...'), so the ending shows.",test
+t49,您昨天值夜班了吗？,,woman,man,yes,listener_gender+formality,,"Formal Ви takes the plural verb, so listener gender won't show in Serbian.",practice
+t50,您通知其他组长了吗？,,man,man,yes,listener_gender+formality,,"Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t51,您是不是忘了打卡？,,woman,woman,yes,listener_gender+formality,,"Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t52,你今天检查过灭火器了吗？,,woman,man,no,listener_gender+formality,,,practice
+t53,你是不是受伤了？,,woman,woman,no,listener_gender+formality,,Listener gender shows in the adjective 'hurt'.,test
+t54,你把表格填完了吗？,,man,man,no,listener_gender+formality,,,practice
+t55,三号线的机器又停了。,,woman,man,no,control,,No 'you' in sentence; listener and formality are just the scene.,test
+t56,明天早上八点开会。,,man,group,yes,control,,No 'you' in sentence; listener and formality are just the scene.,test
+t57,货车下午两点到。,,woman,woman,yes,control,,No 'you' in sentence; listener and formality are just the scene.,test
+t58,仓库里不能抽烟。,,man,group,no,control,,No 'you' in sentence; listener and formality are just the scene.,test
+t59,这批零件有质量问题。,,woman,man,yes,control,,No 'you' in sentence; listener and formality are just the scene.,test
+t60,午休时间是半个小时。,,man,woman,no,control,,No 'you' in sentence; listener and formality are just the scene.,practice
