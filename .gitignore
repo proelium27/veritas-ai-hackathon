@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Secrets
+.env
+*.key
+
+# Big files: data loads from its public source, models go to Hugging Face
+data/raw/
+*.csv.gz
+*.zip
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+*.h5
+*.pkl
+
+# Frontend
+node_modules/
+
+# OS
+.DS_Store
