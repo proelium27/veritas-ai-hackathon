@@ -23,11 +23,19 @@ Format: `Day time ET — who — what happened / numbers / why`.
   - NLLB's options include wrong words: вчера (Russian/Bulgarian, not Serbian јуче), Проверил (Russian form), Уключио (means "turned on", the opposite). The picker must not pick on endings alone; Adam should check meaning too.
   - The rough feminine check missed "Ја сам га искључила" (a word between сам and the verb), and the formal check missed "Јесте ли". Adam's real rules need those patterns.
 - Sat Nov 14, afternoon — commander — 60 test sentences drafted with AI (Mandarin + labels only; ids t01-t60, 15 practice / 45 test, 30 woman / 30 man speakers; categories: speaker_gender 18, formality 12, listener_gender+formality 12, listener_gender 6, speaker_gender+formality 6, control 6). Saved as `data/draft_mandarin_60.csv` and loaded into the Google Sheet "Lost in Translation: Test Sentences", shared with Adam and David as editors. Next: David reviews every sentence and writes the English meaning; Adam writes the Serbian.
+- Sat Nov 14, ~1:45 PM — commander (side session) — Experiment "fix #1: more options" (`notebook/more_options.ipynb`, run top to bottom locally on CPU with nbclient, 0 errors; not yet run in Colab). NLLB on all 60 draft sentences, 4 ways: beam 8, beam 16, beam 32, and 16 random samples (top-p 0.9, seed fixed per sentence). Diverse beam search was planned, but in current transformers it needs `trust_remote_code=True` (runs downloaded code), so we used sampling as the "more varied" method instead. **Script change:** the team switched to Serbian in Latin script. NLLB only outputs Cyrillic (`srp_Cyrl`), so every option is converted letter for letter with `to_latin()` and the detectors work on Latin text. Scores are over the 54 non-control rows (practice + test together):
+  - Some option fits the labels: beam 8 80% (43/54), beam 16 83% (45/54), beam 32 91% (49/54), sample 16 85% (46/54). 52 of 54 have a fit with at least one method; 2 have none.
+  - Top option fits (NLLB alone): 50% (27/54). For woman speakers it fit **0 of 12** (men: 11 of 12). With more options, woman speakers went from 6 of 12 (beam 8) to 8 (beam 16) and 10 (beam 32); listener = woman from 4 of 6 to 5 of 6.
+  - Time per sentence on CPU: 0.62 s (beam 8), 0.71 s (16), 0.88 s (32), 2.21 s (sample 16). When the top option misses, the first fit is at median rank 3.5 (beam 8) to 5 (beam 32).
+  - Fitting options can still be wrong: practice rows show "U subotu" (on Saturday) for "yesterday", "ruke" (hands) for gloves, the non-word "vinka" for forklift, and a sampled "fit" that means something else entirely. The wrong-word checker (včera, učora, učera, Russian -il forms, non-Serbian letters) flagged only 1 of 49 first fits for beam 32 and none of these meaning errors.
+  - **Caveats:** the detectors are a rough first version written by code (passes 19 hand-written examples) and Adam will replace them; the sentences are AI drafts with no human-checked Serbian yet. To respect the fair-test rule, the notebook prints examples only for practice rows: the 7 rows where 32 options found a fit that 8 missed, and the 2 rows with no fit at all, are all test rows, so only their categories are shown.
+  - Takeaway: beam 32 is worth it (cheap, +6 rows, mostly woman speakers), but it isn't enough on its own: 5 rows still have no fit, and meaning still needs a human check. Repair rules or a "had to guess" flag are still needed.
 
 ## Experiments and results
 
 | When | Model / change | Data split | Metric(s) | Result | Notes |
 |---|---|---|---|---|---|
+| Sat Nov 14 ~1:45 PM | NLLB-600M, beam 8 / 16 / 32 / sample 16, rough Latin detectors | 54 non-control draft rows (practice + test) | % rows where some option fits; top option fits | 80% / 83% / 91% / 85%; top option 50% (woman speakers 0/12) | more_options.ipynb; AI-drafted sentences, rough detectors, no human Serbian yet |
 
 ## Known failures and limits
 
