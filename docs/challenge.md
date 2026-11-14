@@ -1,6 +1,6 @@
 # The challenge
 
-Source: the official "Project Briefs" PDF (22 pages), linked from https://highschoolhackathon.org/briefs. Read Sat Nov 14, 1:20 AM ET. PDF: https://drive.google.com/file/d/15tYD48XRmCgWbk1_lLDtc8lebi6qm-4-/view. The brief also mentions a "Hacker Guide": https://drive.google.com/file/d/1_XIisoApHfiuIzkPev6hKJ4SlViGH4pm/view (not read yet).
+Source: the official "Project Briefs" PDF (22 pages), linked from https://highschoolhackathon.org/briefs. Read Sat Nov 14, 1:20 AM ET. PDF: https://drive.google.com/file/d/15tYD48XRmCgWbk1_lLDtc8lebi6qm-4-/view. The brief also mentions a "Hacker Guide": https://drive.google.com/file/d/1_XIisoApHfiuIzkPev6hKJ4SlViGH4pm/view (read Sat 8:20 AM; notes below).
 
 ## The short version
 
@@ -93,6 +93,38 @@ All results on test data the model never saw.
 - Complete once both code and write-up links work. **Submit a first version a few hours early**, then resubmit.
 - Write-up template sections: Project name, Track, Team; The problem; What we built; What we added; How it works; Results (baseline X, model Y, where it fails); What we'd do next; Sources.
 - Video: problem 15s, demo 60s, how it works 30s, next steps 15s. A screen recording with voice-over is enough.
+
+## Kickoff email (Sat 12:00 AM, read 8:20 AM)
+
+Sent to Caleb's iCloud address at 11:49 PM Fri and forwarded to Gmail Sat morning. What it adds:
+
+- **Reply "Got it"** to the email so the organizers know it arrived. Caleb has to do this himself.
+- **Any public dataset is allowed**, not just the ones in the briefs, as long as it's credited.
+- Each member gets a certificate, which is why the form asks for everyone's name, email and school.
+- Their advice: "A simple project that works beats an ambitious one that doesn't. If you get stuck, cut your idea in half and finish it."
+- **Starter notebook** (optional): https://colab.research.google.com/drive/1AWwKHP2oBsZozPHXDZA45MgBZBx3frmZ. A 45-minute Colab intro that trains a first model on the Breast Cancer Wisconsin data built into scikit-learn.
+- **Sample submission**: Drive folder https://drive.google.com/drive/folders/18B409gf0fjcrsGCj7RAZahwRNdmKoT8E (a PDF plus a Colab notebook). See below.
+
+### The sample submission
+
+"ScamCheck, a scam text filter for grandparents" (Finance, made by Veritas with a fictional team). It trains TF-IDF + logistic regression on SMS Spam, then tests on 40 modern texts the team wrote (20 scams, 20 normal). Baseline "always not spam": 86.6% accuracy, catches 0 of 20 modern scams. First model: 97.3% accuracy but catches 3 of 20. With balanced class weights: 98.4%, catches 16 of 20, 3 false alarms. It explains each warning with the top three suspicious words, and lists its misses ("family emergency" and "wrong number" scams). No video.
+
+What it tells us:
+- **The scam filter idea is taken.** Copying their example would score badly on originality.
+- **The submission form asks for:** project title, building as team or solo, team name, team members (name, email, school), track, **starting point** (which suggested project, if any), **one-sentence pitch**, code link, write-up link, demo video link, **what we added**, datasets/models/AI tools used, and **"New to AI?"** (probably feeds the Best Beginner Build award).
+- The sample write-up puts (fictional) names on its "Team" line and the disclaimer right under the title.
+- How it credits AI tools: "ChatGPT, used to debug a pandas error and to suggest the class_weight setting, which we read about in the scikit-learn documentation before using it." We should credit Claude Code the same way.
+
+## Hacker Guide (extra points not already above)
+
+- **One-sentence test for any idea:** "Our project helps [a specific person] by taking [an input] and giving back [an output]." If we can't fill in all three, the idea needs more thought.
+- Their plan: idea and data loading in the first 2 hours; baseline by midday Saturday; first model Saturday afternoon; input to output working Saturday evening; **sleep at least 7 hours Saturday night**; one measured improvement Sunday morning; demo runs cleanly by Sunday midday; write-up and video Sunday afternoon; submit with 2 hours to spare.
+- **Stop adding features about six hours before the deadline.**
+- Save often (commit to GitHub or save a Colab copy every couple of hours) and keep notes on what we tried.
+- Stuck on one bug for 30 minutes: simplify, switch dataset, or ask for help.
+- Common mistakes: results too good to be true (test data leaked into training), reusing a tutorial dataset without a new question, a write-up that lists tools but not what we learned, links judges can't open.
+- Finals questions to prepare for: "How do you know it works?", "What would cause it to fail?", "Who would use this?" Agree beforehand who answers which kind.
+- Check whether the model works equally well across groups, and say so if it doesn't.
 
 ## Judging (section 6)
 
