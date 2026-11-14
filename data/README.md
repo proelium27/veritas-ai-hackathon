@@ -2,9 +2,9 @@
 
 `test_sentences.csv` is our own test set: short workplace sentences (factory floor, supervisor and worker) in Mandarin, each with the correct Serbian translation. The notebook uses it to check whether a translation gets the Serbian endings right for:
 
-- **who is speaking** (a woman says *Проверила сам*, a man says *Проверио сам*),
-- **who is listening** (to a woman *дошла*, to a man *дошао*),
-- **how formal it is** (您 becomes *Ви / сте*, 你 becomes *ти / си*).
+- **who is speaking** (a woman says *Proverila sam*, a man says *Proverio sam*),
+- **who is listening** (to a woman *došla*, to a man *došao*),
+- **how formal it is** (您 becomes *Vi / ste*, 你 becomes *ti / si*).
 
 The notebook loads it from `https://raw.githubusercontent.com/proelium27/veritas-ai-hackathon/main/data/test_sentences.csv`, so the version in the repo is the one that counts.
 
@@ -21,7 +21,7 @@ The file starts with 4 example rows (`ex1` to `ex4`). Read them, then delete the
 | `listener_gender` | Who is being spoken to | `man`, `woman`, `group` | Mandarin speaker |
 | `formal` | Is it polite/formal (您, talking to a manager)? | `yes`, `no` | Mandarin speaker |
 | `what_it_tests` | Which ending the sentence checks. Join several with `+` | `speaker_gender`, `listener_gender`, `formality`, `control` (e.g. `speaker_gender+formality`) | Mandarin speaker |
-| `correct_serbian` | The correct Serbian, in Cyrillic | | **Serbian speaker only** |
+| `correct_serbian` | The correct Serbian, in Latin letters with the marks (č, ć, š, ž, đ, dž) | | **Serbian speaker only** |
 | `notes` | Anything worth knowing (optional) | | either |
 | `split` | `practice` or `test` (see below) | `practice`, `test` | Mandarin speaker |
 
@@ -43,12 +43,12 @@ If more than one Serbian answer is correct, the Serbian speaker writes the most 
 
 Across all 80 rows that gives 40 women and 40 men speaking, and 40 formal and 40 informal. In every group, also split the speaker 50/50 between women and men. Of the 80 rows, 20 are `practice` and 60 are `test` (one in four of each kind; see below).
 
-With formal Ви, Serbian normally uses the plural form (*дошли*) for both a man and a woman, so the listener's gender usually doesn't show. That is why formal "Did you...?" rows test only `formality`. The Serbian speaker has the final say on what is correct.
+With formal Vi, Serbian normally uses the plural form (*došli*) for both a man and a woman, so the listener's gender usually doesn't show. That is why formal "Did you...?" rows test only `formality`. The Serbian speaker has the final say on what is correct.
 
 ## Rules
 
 1. **Write the Serbian from the English meaning plus the labels only.** Never look at Google Translate, DeepL, ChatGPT or any other translation app or model output while writing it. If the answers come from a machine, the test is worthless.
-2. **One script: Cyrillic.** No Latin letters in `correct_serbian` (the checker flags them).
+2. **One script: Latin, with the marks.** Write `correct_serbian` in Latin letters and always use č, ć, š, ž, đ and dž, never plain c, s, z or d in their place. The marks are part of the spelling: without them a word is misspelled (*sta* for *šta*) or becomes a different word (*kuca* "knocks" for *kuća* "house"), and the notebook would count a correct model answer as wrong. The translation models write Cyrillic and the notebook converts their output to Latin letter for letter, so our answers must be in Latin to compare fairly. No Cyrillic letters in `correct_serbian` (the checker flags them). To type the marks, add the Serbian (Latin) keyboard in your computer's or phone's settings.
 3. **Keep sentences short: one clause each**, like "I already turned the machine off." Workplace topics only.
 4. **No real names or personal information.** Use "the manager", "the machine", "line 3", not anyone's name.
 5. The Mandarin can be drafted with an AI tool, but the Mandarin speaker must read and fix every sentence and its labels.
@@ -69,7 +69,7 @@ With formal Ви, Serbian normally uses the plural form (*дошли*) for both 
 4. File > Download > Comma-separated values (.csv).
 5. Send the downloaded file to the teammate who manages the repo.
 
-Avoid opening the CSV straight in Excel: it can scramble Chinese and Cyrillic characters.
+Avoid opening the CSV straight in Excel: it can scramble Chinese characters and Serbian letters like č and š.
 
 **Option B: edit in the repo.** Open `data/test_sentences.csv` in a code editor (VS Code shows it as plain text). Any cell that contains a comma must be wrapped in double quotes, like `"one, two"`. Commit and push as usual.
 
@@ -81,7 +81,7 @@ From the top folder of the repo, run:
 python3 data/check_test_set.py
 ```
 
-It lists problems (wrong column names, empty cells, values that aren't allowed, repeated ids, Latin letters in the Serbian, 您/你 that don't match `formal`) and prints counts for each column so you can compare against the target mix above. Empty `correct_serbian` cells show up as errors until the Serbian speaker fills them in; that's expected while the work is in progress. To check a downloaded copy instead, give its path: `python3 data/check_test_set.py ~/Downloads/test_sentences.csv`.
+It lists problems (wrong column names, empty cells, values that aren't allowed, repeated ids, Cyrillic letters in the Serbian, Serbian that looks typed without the č/ć/š/ž/đ marks, 您/你 that don't match `formal`) and prints counts for each column so you can compare against the target mix above. Empty `correct_serbian` cells show up as errors until the Serbian speaker fills them in; that's expected while the work is in progress. To check a downloaded copy instead, give its path: `python3 data/check_test_set.py ~/Downloads/test_sentences.csv`.
 
 ## Source and credit
 

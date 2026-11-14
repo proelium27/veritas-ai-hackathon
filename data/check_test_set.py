@@ -7,7 +7,8 @@ What this script does, in plain English:
        - empty cells that must be filled in
        - values that are not on the allowed list (for example "female" instead of "woman")
        - the same id used twice
-       - Latin letters (a, b, c, š, ž ...) in the Serbian, which must be Cyrillic only
+       - Cyrillic letters (а, б, ш, ж ...) in the Serbian, which must be Latin only
+       - Serbian that looks typed without the marks (sta instead of šta)
        - 您 (formal "you") marked formal=no, or 你 (informal "you") marked formal=yes
   4. Prints a table counting the rows in each category, so we can compare
      against the target mix in data/README.md.
@@ -76,6 +77,14 @@ TARGET_TESTS = {
 }
 TARGET_SPLIT = {"practice": 20, "test": 60}
 
+# Common words that need a mark, as people type them when the marks are left off:
+# sta (šta, "what"), cao (ćao, "hi/bye"), sto (što, "why/that"), jos (još, "still/yet").
+# ("sto" is also a real word, "hundred" or "table", which is why this is only a warning.)
+MISSING_MARK_GIVEAWAYS = {"sta", "cao", "sto", "jos"}
+
+# The Serbian Latin letters that carry a mark (dž is d + ž, so ž covers it).
+MARKED_LETTERS = set("čćšžđČĆŠŽĐ")
+
 # By default, check the CSV that sits next to this script.
 DEFAULT_PATH = Path(__file__).parent / "test_sentences.csv"
 
@@ -84,19 +93,34 @@ DEFAULT_PATH = Path(__file__).parent / "test_sentences.csv"
 # Small helper functions
 # ---------------------------------------------------------------------------
 
-def latin_letters_in(text):
-    """Return the Latin letters found in text (Serbian must be Cyrillic only).
+def cyrillic_letters_in(text):
+    """Return the Cyrillic letters found in text (Serbian must be Latin only).
 
     unicodedata.name() gives every character its official Unicode name,
-    e.g. "LATIN SMALL LETTER S WITH CARON" for š, or
-    "CYRILLIC SMALL LETTER ES" for с. So any letter whose name contains
-    "LATIN" is a Latin letter, including š, ž, č, ć and đ.
+    e.g. "CYRILLIC SMALL LETTER ES" for с, or
+    "LATIN SMALL LETTER S WITH CARON" for š. So any letter whose name
+    contains "CYRILLIC" is a Cyrillic letter. This also catches Cyrillic
+    letters that look exactly like Latin ones (Cyrillic а, е, о, с, р).
     """
     found = []
     for character in text:
-        if character.isalpha() and "LATIN" in unicodedata.name(character, ""):
+        if character.isalpha() and "CYRILLIC" in unicodedata.name(character, ""):
             found.append(character)
     return found
+
+
+def missing_mark_giveaways(text):
+    """Return giveaway words (sta, cao, sto, jos) if the text has no marked letters.
+
+    If the answer already has any of č, ć, š, ž, đ, the writer is using the
+    marks, so we stay quiet. Otherwise we look for whole words that are
+    usually šta, ćao, što or još typed without their marks.
+    """
+    if any(character in MARKED_LETTERS for character in text):
+        return []
+    # Turn every non-letter (spaces, commas, ?) into a space, then split into words.
+    letters_only = "".join(c if c.isalpha() else " " for c in text.lower())
+    return [word for word in letters_only.split() if word in MISSING_MARK_GIVEAWAYS]
 
 
 def tidy_tests(value):
@@ -151,7 +175,7 @@ def check(path):
     try:
         text = raw_bytes.decode("utf-8")
     except UnicodeDecodeError:
-        print("ERROR: the file is not UTF-8, so Chinese and Cyrillic letters would break. "
+        print("ERROR: the file is not UTF-8, so Chinese characters and letters like č would break. "
               "Download it again from Google Sheets as CSV.")
         return 1
 
@@ -236,11 +260,18 @@ def check(path):
             else:
                 seen_ids[row["id"]] = line
 
-        # 5. The Serbian must be Cyrillic only.
-        latin = latin_letters_in(row["correct_serbian"])
-        if latin:
-            errors.append(f"{where}: correct_serbian has Latin letters "
-                          f"{''.join(latin)!r}; write it in Cyrillic only.")
+        # 5. The Serbian must be Latin only (the notebook converts the models'
+        #    Cyrillic output to Latin, so the answers must be Latin to compare).
+        cyrillic = cyrillic_letters_in(row["correct_serbian"])
+        if cyrillic:
+            errors.append(f"{where}: correct_serbian has Cyrillic letters "
+                          f"{''.join(cyrillic)!r}; write it in Latin letters only.")
+
+        # 5b. Warn if the Serbian looks typed without the marks (sta, not šta).
+        giveaways = missing_mark_giveaways(row["correct_serbian"])
+        if giveaways:
+            warnings.append(f"{where}: correct_serbian has {', '.join(giveaways)} and no "
+                            f"č/ć/š/ž/đ at all; were the marks left off (šta, ćao, što, još)?")
 
         # 6. 您 is formal "you", 你 is informal "you". Warn if the label disagrees.
         if "您" in row["mandarin"] and row["formal"] == "no":
