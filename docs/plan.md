@@ -15,7 +15,9 @@ Source: the "Our plan" tab of the team Google Doc, cleaned up. Where the doc gav
 
 Not decided yet. Until the team splits roles, every task here belongs to the team as a whole.
 
-## Repo layout (create at kickoff, not before)
+## Repo layout
+
+Created Sat 9 AM: README, requirements.txt, notebook/model.ipynb (section headings, setup, scoring helper), docs/writeup.md (template). server/ and frontend/ wait until the notebook is solid.
 
 ```
 README.md               what it does, how to run it, results, credits

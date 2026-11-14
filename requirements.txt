@@ -1,0 +1,8 @@
+# Libraries the notebook uses. Google Colab already has all of these installed,
+# so judges don't need to install anything. This file is for running it
+# somewhere else (pip install -r requirements.txt).
+# Add a line here whenever the notebook imports something new.
+numpy
+pandas
+scikit-learn
+matplotlib
