@@ -1,5 +1,61 @@
 id,mandarin,english_meaning,speaker_gender,listener_gender,formal,what_it_tests,correct_serbian,notes,split
-ex1,我检查过了。,I checked it.,woman,man,no,speaker_gender,Proverila sam.,"EXAMPLE - delete before use. Woman speaking to a man coworker, informal. Speaker gender shows in the ending: Proverila (woman) vs Proverio (man).",
-ex2,您昨天来上班了吗？,Did you come to work yesterday?,man,man,yes,formality,Da li ste juče došli na posao?,"EXAMPLE - delete before use. Man speaking to a manager, formal (您 becomes Vi/ste). With formal Vi the verb takes the plural form došli, so the manager's gender does not show; listener set to man just as an example.",
-ex3,你昨天来上班了吗？,Did you come to work yesterday?,man,woman,no,listener_gender+formality,Da li si juče došla na posao?,"EXAMPLE - delete before use. Man speaking to a woman coworker, informal (你 becomes ti/si). Listener gender shows: došla (to a woman) vs došao (to a man).",
-ex4,我已经把机器关了。,I already turned the machine off.,woman,woman,yes,speaker_gender,Već sam isključila mašinu.,"EXAMPLE - delete before use. Woman speaking to a manager, formal. There is no 'you' in the sentence, so only speaker gender shows: isključila (woman) vs isključio (man). Listener set to woman just as an example.",
+t01,我昨天加了两个小时的班。,I worked two extra hours yesterday.,woman,man,yes,speaker_gender,Juče sam radila dva sata prekovremeno.,No 'you' in sentence; listener and formality are just the scene.,practice
+t02,我把报告写完了。,I finished writing the report.,man,woman,yes,speaker_gender,Završio sam pisanje izveštaja.,No 'you' in sentence; listener and formality are just the scene.,practice
+t03,我已经到车间了。,I arrived to the workshop.,woman,woman,no,speaker_gender,Stigla sam u radionicu,"No 'you' in sentence; listener and formality are just the scene. Keep 'arrived' in the past tense in Serbian (not 'I am already at...'), so the ending shows.",practice
+t04,我今天太累了。,I am too tired today.,man,man,no,speaker_gender,Danas sam previše umoran,No 'you' in sentence; listener and formality are just the scene. Speaker gender shows in the adjective 'tired'.,test
+t05,我忘了带安全帽。,I forgot to wear my safety helmet.,woman,group,no,speaker_gender,Zaboravila sam da stavim zaštitnu kacigu.,No 'you' in sentence; listener and formality are just the scene.,test
+t06,我刚才看见叉车撞到货架了。,I just saw a forklift hit the shelves.,man,woman,yes,speaker_gender,Upravo sam video kako je viljuškar udario u police,No 'you' in sentence; listener and formality are just the scene.,practice
+t07,我已经换好工作服了。,I already changed into my work clothes.,woman,man,no,speaker_gender,Već sam se presvukla u radnu odecu,No 'you' in sentence; listener and formality are just the scene.,test
+t08,我昨天生病了。,I became sick yesterday.,man,man,yes,speaker_gender,Juče sam se razboleo,No 'you' in sentence; listener and formality are just the scene. Speaker gender shows in 'was sick' (adjective and past verb).,test
+t09,我已经通知司机了。,I already notified the driver.,woman,woman,yes,speaker_gender,Već sam obavestila vozača,No 'you' in sentence; listener and formality are just the scene.,test
+t10,我准备好了。,I am ready.,man,group,no,speaker_gender,Ja sam spreman,No 'you' in sentence; listener and formality are just the scene. Speaker gender shows in the adjective 'ready'.,test
+t11,我把货物都清点完了。,I finished counting and checking the goods.,woman,man,yes,speaker_gender,Završila sam prebrojavanje i proveru robe,No 'you' in sentence; listener and formality are just the scene.,test
+t12,我上周去总部参加了培训。,I went to headquarters last week for training.,man,woman,no,speaker_gender,Prošle nedelje sam išao u centralu za obuku,No 'you' in sentence; listener and formality are just the scene.,test
+t13,我没听清楚。,I didn't listen clearly.,woman,man,yes,speaker_gender,Nisam dobro slušala,No 'you' in sentence; listener and formality are just the scene.,test
+t14,我已经把仓库门锁好了。,I already locked the warehouse door.,man,group,yes,speaker_gender,Već sam zaključao vrata skladišta.,No 'you' in sentence; listener and formality are just the scene.,test
+t15,我今天早上迟到了。,I was late this morning.,woman,woman,yes,speaker_gender,Jutros sam zakasnila.,No 'you' in sentence; listener and formality are just the scene.,test
+t16,我已经把数据录进系统了。,I already entered the data into the system.,man,man,no,speaker_gender,Već sam uneo podatke u sistem.,No 'you' in sentence; listener and formality are just the scene.,test
+t17,我刚吃完午饭。,I just finished lunch.,man,woman,no,speaker_gender,Sad sam završio ručak.,No 'you' in sentence; listener and formality are just the scene.,test
+t18,我已经把那台机器修好了。,I already fixed that machine.,woman,group,no,speaker_gender,Već sam popravila tu mašinu,No 'you' in sentence; listener and formality are just the scene.,test
+t19,你吃午饭了吗？,Did you eat lunch?,man,woman,no,listener_gender,Da li si ručala?,,test
+t20,你是不是累了？,Are you tired?,woman,man,no,listener_gender,Da li si umoran?,Listener gender shows in the adjective 'tired'.,test
+t21,你把垃圾倒了吗？,Did you dump the trash?,woman,woman,no,listener_gender,Da li si bacila đubre?,,test
+t22,你看到我的手套了吗？,Did you see my gloves?,man,man,no,listener_gender,Da li si video moje rukavice?,,practice
+t23,你昨天几点走的？,When did you leave yesterday?,man,woman,no,listener_gender,Kada si juče otišla?,,practice
+t24,你昨天跟主管说了吗？,Did you talk to the manager yesterday?,woman,man,no,listener_gender,Da li si juče razgovarao sa šefom,,test
+t25,您需要帮忙吗？,Do you need help?,man,woman,yes,formality,Da li vam treba pomoć?,"Pair with t26 (only 您/你 differs). No past tense or adjective about 'you', so listener gender doesn't show.",practice
+t26,你需要帮忙吗？,Do you need help?,man,woman,no,formality,Da li ti treba pomoć?,"Pair with t25 (only 您/你 differs). No past tense or adjective about 'you', so listener gender doesn't show.",practice
+t27,您明天能早点来吗？,Can you come earlier tomorrow?,woman,man,yes,formality,Možete li sutra da dođete ranije,"Pair with t28 (only 您/你 differs). No past tense or adjective about 'you', so listener gender doesn't show.",test
+t28,你明天能早点来吗？,Can you come earlier tomorrow?,woman,man,no,formality,Možeš li sutra da dođeš ranije?,"Pair with t27 (only 您/你 differs). No past tense or adjective about 'you', so listener gender doesn't show.",test
+t29,请您在这里签字。,Please provide your signature over there.,man,man,yes,formality,"Molim vas, potpišite se ovde.","No past tense or adjective about 'you', so listener gender doesn't show.",test
+t30,你先去休息吧。,Get some rest first.,woman,woman,no,formality,Idi prvo da se odmoriš.,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t31,您知道仓库钥匙在哪儿吗？,Do you know where are the warehouse keys?,woman,woman,yes,formality,Znate li gde su ključevi od magacina?,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t32,你会开叉车吗？,Can you drive a forklift?,man,man,no,formality,Znas li da voziš viljuškar?,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t33,您要喝杯咖啡吗？,Do you need a cup of coffee?,woman,man,yes,formality,Hoćete li šolju kafe?,"No past tense or adjective about 'you', so listener gender doesn't show.",practice
+t34,你下午几点下班？,When do you finish work in the afternoon?,man,woman,no,formality,U koliko sati popodne završavaš posao?,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t35,您的包裹在门卫室。,Your package is at the guardhouse.,man,woman,yes,formality,Vaš paket je na portirnici.,"No past tense or adjective about 'you', so listener gender doesn't show. Formality shows in 'your' (formal vs informal form).",test
+t36,你的工牌在这儿。,Your employee badge is here.,woman,man,no,formality,Tvoja kartica je ovde.,"No past tense or adjective about 'you', so listener gender doesn't show. Formality shows in 'your' (formal vs informal form).",test
+t37,我已经给您发过去了。,I already sent it for you.,woman,man,yes,speaker_gender+formality,Već sam Vam to poslala.,Pair with t38 (only 您/你 differs).,test
+t38,我已经给你发过去了。,I already sent it for you.,woman,man,no,speaker_gender+formality,Već sam ti to poslala.,Pair with t37 (only 您/你 differs).,test
+t39,我刚才给您打过电话。,I just called you.,man,woman,yes,speaker_gender+formality,Upravo sam Vas zvao.,,practice
+t40,我帮你把箱子搬过来了。,I helped you carry the box here.,man,woman,no,speaker_gender+formality,Pomogao sam ti da preneseš kutiju ovamo.,,test
+t41,我把您要的零件找到了。,I found the parts you asked for,man,man,yes,speaker_gender+formality,Našao sam delove koje ste tražili,"'您要的' (that you asked for) uses formal plural, so only the speaker's gender shows.",practice
+t42,我已经跟你说过了。,I already told you.,woman,woman,no,speaker_gender+formality,Već sam ti rekla,,test
+t43,您看过这份报告了吗？,Did you see this report?,man,woman,yes,listener_gender+formality,Jeste li pogledali ovaj izveštaj?,"Pair with t44 (only 您/你 differs). Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t44,你看过这份报告了吗？,Did you see this report?,man,woman,no,listener_gender+formality,Jesi li pogledala ovaj izveštaj,Pair with t43 (only 您/你 differs).,test
+t45,您签收那批货了吗？,Have you signed for that shipment?,woman,man,yes,listener_gender+formality,Jeste li potpisali prijem one pošiljke,"Pair with t46 (only 您/你 differs). Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t46,你签收那批货了吗？,Have you signed for that shipment?,woman,man,no,listener_gender+formality,Jesi li potpisao prijem one pošiljke?,Pair with t45 (only 您/你 differs).,test
+t47,您已经到工厂了吗？,Have you arrived at the factory?,man,woman,yes,listener_gender+formality,Jeste li već stigli u fabriku?,"Pair with t48 (only 您/你 differs). Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t48,你已经到工厂了吗？,Have you arrived at the factory?,man,woman,no,listener_gender+formality,Jesi li već stigla u fabriku?,"Pair with t47 (only 您/你 differs). Keep 'arrived' in the past tense in Serbian (not 'are you already at...'), so the ending shows.",test
+t49,您昨天值夜班了吗？,Did you work the night shift yesterday?,woman,man,yes,listener_gender+formality,Jeste li juče radili noćnu smenu?,"Formal Ви takes the plural verb, so listener gender won't show in Serbian.",practice
+t50,您通知其他组长了吗？,Did you notify the other team leaders?,man,man,yes,listener_gender+formality,Jeste li obavestili ostale vođe timova?,"Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t51,您是不是忘了打卡？,Did you forget to check in?,woman,woman,yes,listener_gender+formality,Da niste zaboravili da se prijavite?,"Formal Ви takes the plural verb, so listener gender won't show in Serbian.",test
+t52,你今天检查过灭火器了吗？,Did you check the fire extinguisher today?,woman,man,no,listener_gender+formality,Jesi li danas proverio aparat za gašenje požara,,practice
+t53,你是不是受伤了？,Are you injured?,woman,woman,no,listener_gender+formality,Jesi li povređena,Listener gender shows in the adjective 'hurt'.,test
+t54,你把表格填完了吗？,Did you finish filling out the form?,man,man,no,listener_gender+formality,Jesi li popunio formular?,,practice
+t55,三号线的机器又停了。,The machines on aisle 3 stopped working again.,woman,man,no,control,Mašine na liniji 3 su opet stale.,No 'you' in sentence; listener and formality are just the scene.,test
+t56,明天早上八点开会。,Meet tomorrow morning at 8.,man,group,yes,control,Sastanak je sutra u osam ujutru.,No 'you' in sentence; listener and formality are just the scene.,test
+t57,货车下午两点到。,The truck arrives at 2 in the afternoon.,woman,woman,yes,control,Kamion stiže u dva popodne.,No 'you' in sentence; listener and formality are just the scene.,test
+t58,仓库里不能抽烟。,Smoking is not allowed in the warehouse.,man,group,no,control,U magacinu je zabranjeno pušenje.,No 'you' in sentence; listener and formality are just the scene.,test
+t59,这批零件有质量问题。,This batch of parts has quality issues.,woman,man,yes,control,Ova serija delova ima problem sa kvalitetom.,No 'you' in sentence; listener and formality are just the scene.,test
+t60,午休时间是半个小时。,The lunch break is half an hour long.,man,woman,no,control,Pauza za ručak traje pola sata.,No 'you' in sentence; listener and formality are just the scene.,practice
