@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="860" viewBox="0 0 900 860" role="img" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>Inside the rules: how Match and Repair work</title>
+<desc>Match finds the helper word sam (speaker) or si (listener), looks at the words next to it, and reads their endings: -o or -ao means a man, -la means a woman; Vi, Vaš and ste mean formal, ti, tvoj, si and verbs ending in -š mean casual. If every label matches, the option fits. If no option fits, Repair rewrites endings: regular past forms, a list of irregular verbs and describing words for gender, and fixed word swaps for formality. The fixed sentence is checked again with Match.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="900" height="860" fill="#FFFFFF"/>
+
+<g stroke="#5F5E5A" stroke-width="1.2" fill="none" marker-end="url(#arrow)">
+<line x1="440" y1="122" x2="458" y2="122"/>
+<line x1="240" y1="226" x2="240" y2="244"/>
+<line x1="660" y1="226" x2="660" y2="244"/>
+<line x1="240" y1="406" x2="240" y2="424"/>
+<line x1="660" y1="406" x2="660" y2="424"/>
+<line x1="450" y1="482" x2="450" y2="520"/>
+<line x1="172" y1="752" x2="172" y2="772"/>
+<line x1="450" y1="752" x2="450" y2="772"/>
+<line x1="728" y1="752" x2="728" y2="772"/>
+</g>
+
+<rect x="40" y="20" width="820" height="40" rx="8" fill="#534AB7"/>
+<text x="60" y="40" fill="#FFFFFF" font-size="16" font-weight="600" dominant-baseline="central">1. Match: read the endings of each of NLLB's 32 options</text>
+
+<g font-size="13" fill="#3C3489">
+<rect x="40" y="76" width="400" height="92" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.6"/>
+<text x="56" y="96" font-weight="600" font-size="14">Find the helper word ("am" / "are")</text>
+<text x="56" y="120">sam, nisam → shows the speaker</text>
+<text x="56" y="138">si, jesi, nisi → shows the listener</text>
+<text x="56" y="156">a first-word "Sam", or "je … sam", means "alone": skip</text>
+<rect x="460" y="76" width="400" height="92" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.6"/>
+<text x="476" y="96" font-weight="600" font-size="14">Look at the words next to it</text>
+<text x="476" y="120">1 word before, up to 3 words after</text>
+<text x="476" y="138">stop at da, što, koji, kad, ali or a comma</text>
+<text x="476" y="156">(after "da" the verb can be someone else's)</text>
+</g>
+
+<g font-size="13" dominant-baseline="central" text-anchor="middle">
+<text x="40" y="200" text-anchor="start" fill="#5F5E5A">Example:</text>
+<rect x="110" y="184" width="54" height="32" rx="6" fill="#F1EFE8" stroke="#888780" stroke-width="0.6"/><text x="137" y="200" fill="#444441">Već</text>
+<rect x="172" y="184" width="54" height="32" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/><text x="199" y="200" fill="#3C3489" font-weight="600">sam</text>
+<rect x="234" y="184" width="96" height="32" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/><text x="282" y="200" fill="#085041" font-weight="600">proverila</text>
+<rect x="338" y="184" width="54" height="32" rx="6" fill="#F1EFE8" stroke="#888780" stroke-width="0.6"/><text x="365" y="200" fill="#444441">ovu</text>
+<rect x="400" y="184" width="72" height="32" rx="6" fill="#F1EFE8" stroke="#888780" stroke-width="0.6"/><text x="436" y="200" fill="#444441">mašinu</text>
+<text x="490" y="200" text-anchor="start" fill="#444441">helper "sam" → next word ends in -la → woman ✓</text>
+</g>
+
+<g font-size="13" fill="#3C3489">
+<rect x="40" y="246" width="400" height="160" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.6"/>
+<text x="56" y="268" font-weight="600" font-size="14">Gender: read the ending</text>
+<text x="56" y="292">-o, -ao, -eo, -io, -uo → man (proverio, došao)</text>
+<text x="56" y="311">-la → woman (proverila, došla)</text>
+<text x="56" y="330">describing words from a list: umoran / umorna</text>
+<text x="56" y="349">future tense and "moram" show no gender</text>
+<text x="56" y="368">look-alikes that aren't verbs are skipped:</text>
+<text x="56" y="387">kao, posao, žao, škola, posla, stola</text>
+<rect x="460" y="246" width="400" height="160" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.6"/>
+<text x="476" y="268" font-weight="600" font-size="14">Formality: read the "you"</text>
+<text x="476" y="292">Vi, Vas, Vaš, ste, biste, nemojte → formal</text>
+<text x="476" y="311">ti, tebe, tvoj, si, nemoj → casual</text>
+<text x="476" y="330">verb ending in -š (možeš) → casual; not još, naš</text>
+<text x="476" y="349">first word ending -ite → formal command</text>
+<text x="476" y="368">first word ending -i → casual command,</text>
+<text x="476" y="387">but -ti / -ći words are infinitives (doći)</text>
+</g>
+
+<rect x="40" y="426" width="820" height="56" rx="8" fill="#3C3489"/>
+<text x="450" y="446" fill="#FFFFFF" font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="central">Compare with the row's labels: speaker, listener, formal</text>
+<text x="450" y="466" fill="#CECBF6" font-size="13" text-anchor="middle" dominant-baseline="central">all tested labels match → pick this option · formal rows skip the listener (Vi is the same for him or her)</text>
+
+<text x="462" y="505" fill="#5F5E5A" font-size="13">none of the 32 fits</text>
+
+<rect x="40" y="522" width="820" height="40" rx="8" fill="#0F6E56"/>
+<text x="60" y="542" fill="#FFFFFF" font-size="16" font-weight="600" dominant-baseline="central">2. Repair: rewrite the endings, trying the best option first</text>
+
+<g font-size="13" fill="#085041">
+<rect x="40" y="578" width="264" height="174" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.6"/>
+<text x="54" y="600" font-weight="600" font-size="14">Man → woman</text>
+<text x="54" y="624">-io → -ila, -ao → -ala, -eo → -ela</text>
+<text x="54" y="643">  proverio → proverila</text>
+<text x="54" y="662">a fixed list of 19 irregular verbs:</text>
+<text x="54" y="681">  došao → došla, rekao → rekla</text>
+<text x="54" y="700">describing words from the list:</text>
+<text x="54" y="719">  umoran → umorna</text>
+<rect x="318" y="578" width="264" height="174" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.6"/>
+<text x="332" y="600" font-weight="600" font-size="14">Woman → man</text>
+<text x="332" y="624">drop -la, then add -o after a vowel</text>
+<text x="332" y="643">or -ao after a consonant:</text>
+<text x="332" y="662">  proverila → proverio</text>
+<text x="332" y="681">  došla → došao</text>
+<text x="332" y="700">exceptions: umrla → umro,</text>
+<text x="332" y="719">  rasla → rastao</text>
+<rect x="596" y="578" width="264" height="174" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.6"/>
+<text x="610" y="600" font-weight="600" font-size="14">Casual ↔ formal</text>
+<text x="610" y="624">si → ste, tvoj → Vaš, tebe → Vas</text>
+<text x="610" y="643">Vi → ti, Vam → ti, biste → bi</text>
+<text x="610" y="662">Vas → tebe after za, na, u…;</text>
+<text x="610" y="681">  otherwise te</text>
+<text x="610" y="700">Vama → tobom after s, sa, pred…</text>
+<text x="610" y="719">došli → došla / došao (listener)</text>
+</g>
+
+<rect x="40" y="774" width="820" height="56" rx="8" fill="#3C3489"/>
+<text x="450" y="794" fill="#FFFFFF" font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="central">Check the rewritten sentence again with Match</text>
+<text x="450" y="814" fill="#CECBF6" font-size="13" text-anchor="middle" dominant-baseline="central">fits → use it, marked "repaired" · nothing fits after all 32 → NLLB's top answer, marked "had to guess"</text>
+</svg>

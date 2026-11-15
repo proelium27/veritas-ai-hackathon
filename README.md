@@ -101,6 +101,10 @@ We use three pre-trained translation models as they are (no training) and compar
 
 ![Flowchart: NLLB writes 32 options; Match asks "does an option fit?" (yes: pick it, 37 of 40 test sentences); if not, Repair asks "can a rule fix it?" (yes: fix the ending, 2 of 40); if not, show the best guess with a warning (1 of 40).](docs/how-it-works.svg)
 
+**Inside the rules.** Serbian shows gender in the word next to "sam" (I am) or "si" (you are): *proverio sam* is a man, *proverila sam* a woman. Formality shows in the word for "you": *Vi* / *Vaš* is formal, *ti* / *tvoj* casual. Match reads those words in each option, and Repair rewrites them when no option fits. Every rule and word list came from our Serbian speaker, and the notebook tests each rule on hand-written examples (50 for Match, 49 for Repair).
+
+![Detailed flowchart. Match: find the helper word (sam for the speaker, si for the listener), look at up to 3 words after it, read the endings (-o/-ao man, -la woman; Vi/Vaš formal, ti/tvoj/-š casual), and compare with the row's labels. Repair: rewrite endings man to woman, woman to man, or casual to formal, then check again with Match.](docs/inside-the-rules.svg)
+
 The models write Serbian in Cyrillic, so the notebook converts every output to Latin letter for letter before checking or scoring it.
 
 **How we score:** chrF (a standard translation score from the sacrebleu library that compares our Serbian with the correct Serbian letter by letter), % with the right speaker or listener gender, % with the right formality, and how often a fitting form is somewhere in NLLB's 32 options (the best the picker could ever do). [TO FILL: add "had to guess" flag accuracy here if the notebook reports it.]
