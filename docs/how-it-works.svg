@@ -1,85 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="840" viewBox="0 0 900 840" role="img" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
-<title>How the picker chooses a translation</title>
-<desc>NLLB writes 32 Serbian options. For each option, best first: find the helper word (sam or si), read the endings next to it for gender, and read the words for "you" for formality. Match: do all labels fit? Yes: pick it (37 of 40 test sentences). No: try the next option. If none fit, Repair rewrites the endings. Fits now: use it, marked repaired (2 of 40). Otherwise NLLB's top answer with a "had to guess" warning (1 of 40).</desc>
-<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#B4B2A9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-<rect width="900" height="840" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="830" viewBox="0 0 900 830" role="img">
+<title>How the picker chooses a Serbian translation</title>
+<desc>A vertical flow with a worked example. NLLB writes 32 Serbian options. For each option, best first: find the helper word (sam or si), read the ending next to it, read the word for "you". Match: do all labels fit? Yes: keep it (37 of 40 test sentences). No: try the next option. If none of the 32 fit, Repair: can a rule fix an ending? Yes: use the fix (2 of 40). No: show the top answer with a "had to guess" warning (1 of 40).</desc>
+<defs>
+<marker id="ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#2B2723" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#B83E26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#8A847C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="900" height="830" fill="#FFFEFC"/>
 
-<text x="40" y="48" font-size="22" font-weight="600" fill="#1F1E1C">How the picker chooses a translation</text>
-<text x="40" y="74" font-size="14" fill="#6B6A65">Every rule and word list comes from our Serbian speaker.</text>
+<g font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<text x="40" y="34" font-size="12" font-weight="600" fill="#8A847C" letter-spacing="1.4">FIGURE 1</text>
+<text x="40" y="66" font-size="26" fill="#2B2723" font-family="'Iowan Old Style', Charter, Georgia, serif">How the picker chooses a Serbian translation</text>
+<text x="230" y="108" font-size="12" font-weight="600" fill="#8A847C" letter-spacing="1">STEP</text>
+<text x="560" y="108" font-size="12" font-weight="600" fill="#8A847C" letter-spacing="1">WORKED EXAMPLE</text>
+<line x1="40" y1="120" x2="860" y2="120" stroke="#E6E1D8"/>
 
-<rect x="40" y="100" width="370" height="60" rx="12" fill="#FFFFFF" stroke="#E4E2DA"/>
-<text x="64" y="125" font-size="15" font-weight="600" fill="#1F1E1C">Mandarin + who's talking</text>
-<text x="64" y="146" font-size="13" fill="#6B6A65">我已经检查过了 · woman speaker</text>
-<line x1="418" y1="130" x2="478" y2="130" stroke="#B4B2A9" stroke-width="1.6" marker-end="url(#a)"/>
-<rect x="490" y="100" width="370" height="60" rx="12" fill="#FFFFFF" stroke="#E4E2DA"/>
-<text x="514" y="125" font-size="15" font-weight="600" fill="#1F1E1C">NLLB writes 32 Serbian options</text>
-<text x="514" y="146" font-size="13" fill="#6B6A65">ranked from most to least likely</text>
+<line x1="200" y1="150" x2="200" y2="524" stroke="#2B2723" stroke-width="1.4" marker-end="url(#ink)"/>
+<line x1="200" y1="552" x2="200" y2="624" stroke="#8A847C" stroke-width="1.4" marker-end="url(#gray)"/>
+<line x1="200" y1="656" x2="200" y2="722" stroke="#8A847C" stroke-width="1.4" marker-end="url(#gray)"/>
+<path d="M190 540 H128 Q118 540 118 530 V330 Q118 320 128 320 H192" fill="none" stroke="#8A847C" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#gray)"/>
 
-<line x1="675" y1="168" x2="675" y2="190" stroke="#B4B2A9" stroke-width="1.6" marker-end="url(#a)"/>
+<circle cx="200" cy="150" r="5.5" fill="#2B2723"/>
+<circle cx="200" cy="230" r="5.5" fill="#2B2723"/>
+<circle cx="200" cy="320" r="5.5" fill="#FFFEFC" stroke="#2B2723" stroke-width="1.6"/>
+<circle cx="200" cy="390" r="5.5" fill="#FFFEFC" stroke="#2B2723" stroke-width="1.6"/>
+<circle cx="200" cy="460" r="5.5" fill="#FFFEFC" stroke="#2B2723" stroke-width="1.6"/>
+<rect x="190" y="530" width="20" height="20" fill="#FFFEFC" stroke="#B83E26" stroke-width="1.8" transform="rotate(45 200 540)"/>
+<rect x="190" y="630" width="20" height="20" fill="#FFFEFC" stroke="#B83E26" stroke-width="1.8" transform="rotate(45 200 640)"/>
+<circle cx="200" cy="732" r="6" fill="#FFFEFC" stroke="#8A847C" stroke-width="1.6" stroke-dasharray="3 2"/>
 
-<rect x="40" y="198" width="820" height="372" rx="16" fill="#F6F5F1"/>
-<text x="64" y="226" font-size="12" font-weight="600" fill="#888780" letter-spacing="0.6">FOR EACH OPTION, BEST FIRST</text>
+<text x="230" y="155" font-size="16" font-weight="600" fill="#2B2723">Mandarin, plus who is talking</text>
+<text x="230" y="177" font-size="14" fill="#6E685F">the user sets speaker, listener and formality</text>
+<text x="560" y="156" font-size="19" fill="#2B2723">我已经检查过这台机器了</text>
+<text x="560" y="178" font-size="13" fill="#8A847C">speaker: woman</text>
 
-<g>
-<rect x="64" y="242" width="772" height="68" rx="10" fill="#FFFFFF" stroke="#E4E2DA"/>
-<circle cx="96" cy="276" r="14" fill="#EEEDFE"/><text x="96" y="281" font-size="13" font-weight="600" fill="#534AB7" text-anchor="middle">1</text>
-<text x="124" y="270" font-size="15" font-weight="600" fill="#1F1E1C">Find the helper word</text>
-<text x="124" y="291" font-size="13" fill="#6B6A65">where Serbian shows gender</text>
-<text x="420" y="270" font-size="13" fill="#3D3D3A"><tspan font-style="italic">sam</tspan> (I am) → speaker · <tspan font-style="italic">si</tspan> (you are) → listener</text>
-<text x="420" y="291" font-size="13" fill="#888780">skips <tspan font-style="italic">Sam</tspan> = “alone”; stops at <tspan font-style="italic">da</tspan>, <tspan font-style="italic">što</tspan> or a comma</text>
-</g>
-<g>
-<rect x="64" y="320" width="772" height="68" rx="10" fill="#FFFFFF" stroke="#E4E2DA"/>
-<circle cx="96" cy="354" r="14" fill="#EEEDFE"/><text x="96" y="359" font-size="13" font-weight="600" fill="#534AB7" text-anchor="middle">2</text>
-<text x="124" y="348" font-size="15" font-weight="600" fill="#1F1E1C">Read the endings</text>
-<text x="124" y="369" font-size="13" fill="#6B6A65">speaker and listener gender</text>
-<text x="420" y="348" font-size="13" fill="#3D3D3A">-o, -ao → man (<tspan font-style="italic">proverio</tspan>) · -la → woman (<tspan font-style="italic">proverila</tspan>)</text>
-<text x="420" y="369" font-size="13" fill="#888780">word list <tspan font-style="italic">umoran / umorna</tspan>; skips <tspan font-style="italic">posao</tspan>, <tspan font-style="italic">škola</tspan></text>
-</g>
-<g>
-<rect x="64" y="398" width="772" height="68" rx="10" fill="#FFFFFF" stroke="#E4E2DA"/>
-<circle cx="96" cy="432" r="14" fill="#EEEDFE"/><text x="96" y="437" font-size="13" font-weight="600" fill="#534AB7" text-anchor="middle">3</text>
-<text x="124" y="426" font-size="15" font-weight="600" fill="#1F1E1C">Read the words for “you”</text>
-<text x="124" y="447" font-size="13" fill="#6B6A65">formal or casual</text>
-<text x="420" y="426" font-size="13" fill="#3D3D3A"><tspan font-style="italic">Vi, Vaš, ste</tspan> → formal · <tspan font-style="italic">ti, tvoj</tspan>, -š verbs → casual</text>
-<text x="420" y="447" font-size="13" fill="#888780">a first word ending in -ite is a formal command</text>
-</g>
-<g>
-<rect x="64" y="482" width="772" height="68" rx="10" fill="#534AB7"/>
-<rect x="88" y="504" width="22" height="22" rx="3" fill="#FFFFFF" transform="rotate(45 99 515)"/>
-<text x="124" y="510" font-size="15" font-weight="600" fill="#FFFFFF">Match</text>
-<text x="124" y="531" font-size="13" fill="#CECBF6">Do all the labels fit?</text>
-<rect x="420" y="498" width="196" height="36" rx="18" fill="#E1F5EE"/>
-<text x="518" y="521" font-size="13" font-weight="600" fill="#085041" text-anchor="middle">yes → pick it · 37 / 40</text>
-<rect x="628" y="498" width="192" height="36" rx="18" fill="#3C3489"/>
-<text x="724" y="521" font-size="13" font-weight="600" fill="#EEEDFE" text-anchor="middle">no → next option ↻</text>
+<text x="230" y="235" font-size="16" font-weight="600" fill="#2B2723">NLLB writes 32 Serbian options</text>
+<text x="230" y="257" font-size="14" fill="#6E685F">most likely first</text>
+<g font-family="'Iowan Old Style', Charter, Georgia, serif" font-size="16">
+<text x="560" y="234" fill="#A39D94"><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">1</tspan><tspan dx="6"></tspan> Ja sam pregledao ovu mašinu</text>
+<text x="560" y="256" fill="#A39D94"><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">2</tspan><tspan dx="6"></tspan> Proverio sam ovu mašinu</text>
+<text x="560" y="278" fill="#2B2723"><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">14</tspan><tspan dx="6"></tspan> Već sam proverila ovu mašinu</text>
 </g>
 
-<line x1="450" y1="576" x2="450" y2="612" stroke="#B4B2A9" stroke-width="1.6" marker-end="url(#a)"/>
-<text x="464" y="598" font-size="13" fill="#888780">none of the 32 fit</text>
+<text x="230" y="325" font-size="16" font-weight="600" fill="#2B2723">Find the helper word</text>
+<text x="230" y="347" font-size="14" fill="#6E685F"><tspan font-style="italic">sam</tspan> (I am) points to the speaker, <tspan font-style="italic">si</tspan> to the listener</text>
+<text x="560" y="326" font-size="18" fill="#2B2723" font-family="'Iowan Old Style', Charter, Georgia, serif">Već <tspan fill="#B83E26" font-weight="700">sam</tspan> proverila ovu mašinu</text>
 
-<g>
-<rect x="40" y="620" width="820" height="84" rx="12" fill="#FFFFFF" stroke="#9FE1CB"/>
-<circle cx="72" cy="662" r="14" fill="#E1F5EE"/><text x="72" y="667" font-size="13" font-weight="600" fill="#0F6E56" text-anchor="middle">4</text>
-<text x="100" y="656" font-size="15" font-weight="600" fill="#1F1E1C">Repair the endings</text>
-<text x="100" y="677" font-size="13" fill="#6B6A65">best option first</text>
-<text x="420" y="648" font-size="13" fill="#3D3D3A"><tspan font-style="italic">proverio → proverila</tspan> · <tspan font-style="italic">došao → došla</tspan> (19 irregular verbs)</text>
-<text x="420" y="668" font-size="13" fill="#3D3D3A"><tspan font-style="italic">proverila → proverio</tspan> · <tspan font-style="italic">umrla → umro</tspan></text>
-<text x="420" y="688" font-size="13" fill="#3D3D3A"><tspan font-style="italic">ti → Vi</tspan> · <tspan font-style="italic">tvoj → Vaš</tspan> · <tspan font-style="italic">Vas → tebe</tspan> or <tspan font-style="italic">te</tspan></text>
+<text x="230" y="395" font-size="16" font-weight="600" fill="#2B2723">Read the ending next to it</text>
+<text x="230" y="417" font-size="14" fill="#6E685F">-o, -ao: a man · -la: a woman</text>
+<text x="560" y="396" font-size="19" fill="#2B2723" font-family="'Iowan Old Style', Charter, Georgia, serif">proveri<tspan fill="#B83E26" font-weight="700">la</tspan><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#6E685F">   →  a woman is speaking</tspan></text>
+
+<text x="230" y="465" font-size="16" font-weight="600" fill="#2B2723">Read the word for “you”</text>
+<text x="230" y="487" font-size="14" fill="#6E685F"><tspan font-style="italic">Vi, Vaš</tspan>: formal · <tspan font-style="italic">ti, tvoj</tspan>: casual</text>
+<text x="560" y="466" font-size="14" fill="#8A847C">no “you” here, so nothing to check</text>
+
+<text x="230" y="545" font-size="16" font-weight="600" fill="#B83E26">Match: do all labels fit?</text>
+<line x1="462" y1="540" x2="548" y2="540" stroke="#B83E26" stroke-width="1.4" marker-end="url(#red)"/>
+<text x="505" y="531" font-size="13" fill="#B83E26" text-anchor="middle">yes</text>
+<text x="560" y="546" font-size="18" fill="#B83E26" font-family="'Iowan Old Style', Charter, Georgia, serif">Već sam proverila ovu mašinu</text>
+<text x="560" y="568" font-size="13" fill="#8A847C">kept as is · 37 of 40 test sentences</text>
+<text x="108" y="420" font-size="13" fill="#8A847C" text-anchor="end">no: try the</text>
+<text x="108" y="438" font-size="13" fill="#8A847C" text-anchor="end">next option</text>
+<text x="212" y="594" font-size="13" fill="#8A847C">none of the 32 fit</text>
+
+<text x="230" y="645" font-size="16" font-weight="600" fill="#B83E26">Repair: can a rule fix it?</text>
+<text x="230" y="667" font-size="14" fill="#6E685F"><tspan font-style="italic">proverio → proverila</tspan> · <tspan font-style="italic">ti → Vi</tspan> · <tspan font-style="italic">tvoj → Vaš</tspan></text>
+<line x1="462" y1="640" x2="548" y2="640" stroke="#B83E26" stroke-width="1.4" marker-end="url(#red)"/>
+<text x="505" y="631" font-size="13" fill="#B83E26" text-anchor="middle">yes</text>
+<text x="560" y="646" font-size="19" fill="#2B2723" font-family="'Iowan Old Style', Charter, Georgia, serif"><tspan fill="#A39D94">dodao</tspan> → doda<tspan fill="#B83E26" font-weight="700">la</tspan> sam</text>
+<text x="560" y="668" font-size="13" fill="#8A847C">ending rewritten · 2 of 40</text>
+<text x="212" y="698" font-size="13" fill="#8A847C">no</text>
+
+<text x="230" y="737" font-size="16" font-weight="600" fill="#2B2723">Show the top answer with a warning</text>
+<text x="230" y="759" font-size="14" fill="#6E685F">flagged “had to guess” · 1 of 40</text>
+<text x="560" y="738" font-size="19" fill="#A39D94" font-family="'Iowan Old Style', Charter, Georgia, serif">Ne, ne, ne…</text>
+<text x="560" y="760" font-size="13" fill="#8A847C">NLLB broke down on this one</text>
+
+<line x1="40" y1="784" x2="860" y2="784" stroke="#E6E1D8"/>
+<text x="40" y="804" font-size="12.5" fill="#8A847C">Counts are for the 40 test sentences that check gender or formality; 5 control sentences have nothing to check.</text>
+<text x="40" y="822" font-size="12.5" fill="#8A847C">Every rule and word list comes from our Serbian speaker.</text>
 </g>
-
-<line x1="450" y1="710" x2="450" y2="732" stroke="#B4B2A9" stroke-width="1.6" marker-end="url(#a)"/>
-
-<g>
-<rect x="40" y="740" width="820" height="68" rx="12" fill="#0F6E56"/>
-<rect x="64" y="762" width="22" height="22" rx="3" fill="#FFFFFF" transform="rotate(45 75 773)"/>
-<text x="100" y="768" font-size="15" font-weight="600" fill="#FFFFFF">Repair</text>
-<text x="100" y="789" font-size="13" fill="#9FE1CB">Does it fit now?</text>
-<rect x="420" y="756" width="196" height="36" rx="18" fill="#E1F5EE"/>
-<text x="518" y="779" font-size="13" font-weight="600" fill="#085041" text-anchor="middle">yes → use it · 2 / 40</text>
-<rect x="628" y="756" width="216" height="36" rx="18" fill="#FAECE7"/>
-<text x="736" y="779" font-size="13" font-weight="600" fill="#712B13" text-anchor="middle">no → “had to guess” · 1 / 40</text>
-</g>
-
-<text x="40" y="830" font-size="12" fill="#888780">Counts are the 40 test sentences that check gender or formality (5 control sentences have nothing to check).</text>
 </svg>
