@@ -5,7 +5,7 @@ t03,我已经到车间了。,I arrived to the workshop.,woman,woman,no,speaker_g
 t04,我今天太累了。,I am too tired today.,man,man,no,speaker_gender,Danas sam previše umoran,No 'you' in sentence; listener and formality are just the scene. Speaker gender shows in the adjective 'tired'.,test
 t05,我忘了带安全帽。,I forgot to wear my safety helmet.,woman,group,no,speaker_gender,Zaboravila sam da stavim zaštitnu kacigu.,No 'you' in sentence; listener and formality are just the scene.,test
 t06,我刚才看见叉车撞到货架了。,I just saw a forklift hit the shelves.,man,woman,yes,speaker_gender,Upravo sam video kako je viljuškar udario u police,No 'you' in sentence; listener and formality are just the scene.,practice
-t07,我已经换好工作服了。,I already changed into my work clothes.,woman,man,no,speaker_gender,Već sam se presvukla u radnu odecu,No 'you' in sentence; listener and formality are just the scene.,test
+t07,我已经换好工作服了。,I already changed into my work clothes.,woman,man,no,speaker_gender,Već sam se presvukla u radnu odeću,No 'you' in sentence; listener and formality are just the scene.,test
 t08,我昨天生病了。,I became sick yesterday.,man,man,yes,speaker_gender,Juče sam se razboleo,No 'you' in sentence; listener and formality are just the scene. Speaker gender shows in 'was sick' (adjective and past verb).,test
 t09,我已经通知司机了。,I already notified the driver.,woman,woman,yes,speaker_gender,Već sam obavestila vozača,No 'you' in sentence; listener and formality are just the scene.,test
 t10,我准备好了。,I am ready.,man,group,no,speaker_gender,Ja sam spreman,No 'you' in sentence; listener and formality are just the scene. Speaker gender shows in the adjective 'ready'.,test
@@ -30,7 +30,7 @@ t28,你明天能早点来吗？,Can you come earlier tomorrow?,woman,man,no,form
 t29,请您在这里签字。,Please provide your signature over there.,man,man,yes,formality,"Molim vas, potpišite se ovde.","No past tense or adjective about 'you', so listener gender doesn't show.",test
 t30,你先去休息吧。,Get some rest first.,woman,woman,no,formality,Idi prvo da se odmoriš.,"No past tense or adjective about 'you', so listener gender doesn't show.",test
 t31,您知道仓库钥匙在哪儿吗？,Do you know where are the warehouse keys?,woman,woman,yes,formality,Znate li gde su ključevi od magacina?,"No past tense or adjective about 'you', so listener gender doesn't show.",test
-t32,你会开叉车吗？,Can you drive a forklift?,man,man,no,formality,Znas li da voziš viljuškar?,"No past tense or adjective about 'you', so listener gender doesn't show.",test
+t32,你会开叉车吗？,Can you drive a forklift?,man,man,no,formality,Znaš li da voziš viljuškar?,"No past tense or adjective about 'you', so listener gender doesn't show.",test
 t33,您要喝杯咖啡吗？,Do you need a cup of coffee?,woman,man,yes,formality,Hoćete li šolju kafe?,"No past tense or adjective about 'you', so listener gender doesn't show.",practice
 t34,你下午几点下班？,When do you finish work in the afternoon?,man,woman,no,formality,U koliko sati popodne završavaš posao?,"No past tense or adjective about 'you', so listener gender doesn't show.",test
 t35,您的包裹在门卫室。,Your package is at the guardhouse.,man,woman,yes,formality,Vaš paket je na portirnici.,"No past tense or adjective about 'you', so listener gender doesn't show. Formality shows in 'your' (formal vs informal form).",test
