@@ -92,7 +92,7 @@ The models write Serbian in Cyrillic, so the notebook converts every output to L
 
 ## Results
 
-On the 45 test rows, scored once after the rules were frozen (notebook section 7b).
+On the 45 test rows, scored once after the rules were frozen (notebook section 7).
 
 | System | chrF | Gender correct | Formality correct | All tested endings right |
 |---|---|---|---|---|
@@ -116,7 +116,7 @@ Rows where `detect()` couldn't read the gender or formality at all are left out 
 
 ## Where it fails
 
-Three of the five real misses we found on the test rows, each a different kind of failure (all five are in section 7b of the notebook):
+Three of the five real misses we found on the test rows, each a different kind of failure (all five are in section 7 of the notebook):
 
 1. **t30** Mandarin: 你先去休息吧 ("Get some rest first") / What we produced: *Ne, ne, ne, ne, …* ("no, no, no…") / Correct: *Idi prvo da se odmoriš.* / Why: NLLB broke and all 32 options were the same repeat, so nothing fit; our "had to guess" warning fired, but there was nothing good to give.
 2. **t11** Mandarin: 我把货物都清点完了 ("I finished counting and checking the goods", a woman) / What we produced: *Ja sam završila čišćenje.* ("I finished cleaning") / Correct: *Završila sam prebrojavanje i proveru robe.* / Why: the woman's ending is right, but NLLB read 清点 "count and check" as 清 "clean", and our picker checks endings, not meaning.
@@ -124,7 +124,7 @@ Three of the five real misses we found on the test rows, each a different kind o
 
 ## Limits
 
-The full list, with examples, is in section 9 of the notebook.
+The full list, with examples, is in section 10 of the notebook.
 
 - **Small test set:** 60 sentences, 15 practice and 45 test, so each test percentage moves by 2 to 3 points per sentence.
 - **Endings, not words:** the picker can only choose among NLLB's 32 options and repair only changes endings, so a wrong word or a broken tense stays (t11, t08).

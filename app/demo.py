@@ -17,8 +17,8 @@ Why a plain Python file, and why it reads the notebook
 - It holds NO translation rules. It opens notebook/model.ipynb and runs the notebook cells
   that define to_latin(), detect(), repair(), pick() and translate_one(). So the notebook
   stays the one place where the rules live: change a rule there, and this page changes too.
-- It skips the cells that translate and score our 60 test sentences (sections 4, 7, 7b
-  and most of 3, 5 and 6), so it starts faster and uses less memory.
+- It skips the cells that translate and score our 60 test sentences (sections 6, 7 and 9,
+  and most of 3, 4 and 5), so it starts faster and uses less memory.
 - To fill in the page, it calls the notebook's own translate_one(). While translate_one()
   runs, we note down what two of its helpers, translate() and pick(), hand back (see
   translate_and_record below). So the cards show exactly the answers the notebook prints.
@@ -154,8 +154,8 @@ def load_notebook_code():
         chosen = [(*find_cell(marker), True) for marker in RUN_WHOLE_CELL]
         chosen += [(*find_cell(marker), False) for marker in DEFINITIONS_ONLY]
         chosen.sort()                 # run them in the notebook's own order
-        # Section 6 starts with "del zh_en, en_sr" (it frees section 5's baseline models).
-        # We skip section 5's loading, so give it two empty stand-ins to delete.
+        # Section 5 starts with "del zh_en, en_sr" (it frees section 4's baseline models).
+        # We skip section 4's loading, so give it two empty stand-ins to delete.
         NB["zh_en"] = NB["en_sr"] = None
         for number, source, whole in chosen:
             code = source if whole else definitions_only(source)
