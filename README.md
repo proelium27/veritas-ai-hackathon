@@ -120,24 +120,26 @@ final test-row numbers instead. -->
 
 ## Where it fails
 
-[TO FILL: 3-5 real misses from the test rows, each in the format below. One line each for "why". Pick different kinds of failure if you can (a wrong word that still has the right ending, no option fitting, the picker choosing the wrong one, a control sentence going wrong).]
+Three of the five real misses we found on the test rows, each a different kind of failure (all five are in section 7b of the notebook):
 
-1. [TO FILL] Mandarin: ... / What we produced: ... / Correct: ... / Why: ...
-2. [TO FILL] Mandarin: ... / What we produced: ... / Correct: ... / Why: ...
-3. [TO FILL] Mandarin: ... / What we produced: ... / Correct: ... / Why: ...
-4. [TO FILL, optional] Mandarin: ... / What we produced: ... / Correct: ... / Why: ...
-5. [TO FILL, optional] Mandarin: ... / What we produced: ... / Correct: ... / Why: ...
+1. **t30** Mandarin: 你先去休息吧 ("Get some rest first") / What we produced: *Ne, ne, ne, ne, …* ("no, no, no…") / Correct: *Idi prvo da se odmoriš.* / Why: NLLB broke and all 32 options were the same repeat, so nothing fit; our "had to guess" warning fired, but there was nothing good to give.
+2. **t11** Mandarin: 我把货物都清点完了 ("I finished counting and checking the goods", a woman) / What we produced: *Ja sam završila čišćenje.* ("I finished cleaning") / Correct: *Završila sam prebrojavanje i proveru robe.* / Why: the woman's ending is right, but NLLB read 清点 "count and check" as 清 "clean", and our picker checks endings, not meaning.
+3. **t08** Mandarin: 我昨天生病了 ("I got sick yesterday", a man) / What we produced: *Ja sam juče bolestan.* ("I am sick yesterday") / Correct: *Juče sam se razboleo.* / Why: the man's ending is right but the tense is broken, which our rules can't see; the route through English got this one exactly right.
 
 ## Limits
 
-- **Small test set:** 60 sentences, 45 of them test rows, so each percentage moves by about 2 points per sentence.
-- **Workplace sentences only:** short, one-clause sentences about work. We haven't tested long or casual text.
-- **The user has to say who's speaking and to whom.** The system doesn't guess gender or formality from the Mandarin; it needs the three choices.
+The full list, with examples, is in section 9 of the notebook.
+
+- **Small test set:** 60 sentences, 15 practice and 45 test, so each test percentage moves by 2 to 3 points per sentence. The picker's gender lead over NLLB direct is bigger than chance; its formality lead isn't.
+- **Partly circular scores:** gender and formality are graded by `detect()`, the same reader the picker uses to choose, so the picker's 100% is partly built in. Our Serbian speaker's meaning check is the fair test.
+- **Endings, not words:** the picker can only choose among NLLB's 32 options and repair only changes endings, so a wrong word or a broken tense stays (t11, t08).
+- **NLLB's own mistakes:** made-up words (*vinkar* for forklift, *Sastanao sam*), words and letters from neighbouring languages (Macedonian ѓ, Russian-looking *opozdao*, Croatian- or Bosnian-style phrasing), and once a breakdown into *Ne, ne, ne…* (t30).
+- **A known bug, left in:** `to_latin()` doesn't convert the Macedonian letter ѓ (t21). We found it after scoring the test rows and didn't fix it, so the test numbers stay as scored.
+- **The user has to say who's speaking and to whom.** The system doesn't guess gender or formality from the Mandarin.
+- **Workplace sentences only:** short, one-part messages about work. We haven't tested long or casual text.
+- **AI-drafted Mandarin:** drafted with an AI tool and then checked by a native speaker, so it may read more like textbook Mandarin than real messages.
+- **A small model:** NLLB's 600M distilled version, the smallest one. We didn't test the bigger ones.
 - **Non-commercial model:** NLLB is licensed CC BY-NC 4.0, so this can't be used in a paid product as it is.
-- **Cyrillic converted to Latin:** the models write Cyrillic; we convert letter for letter, which is exact for Serbian but means we never score the models' own Latin output.
-- **AI-drafted Mandarin:** the Mandarin sentences were drafted with an AI tool and then checked by a native speaker, so they may read more like textbook Mandarin than real workplace messages.
-- **Fitting endings aren't always right meanings:** the picker checks endings, so it can pick an option with the right gender but the wrong word.
-- [TO FILL, optional: any other limit we found.]
 
 ## What we'd do next
 
@@ -163,23 +165,26 @@ Earlier ideas we considered before picking this one are in [docs/kickoff-brief.m
 
 ## Sources and credits
 
-**Pre-trained models** (all from Hugging Face, used as they are, not retrained):
+**Pre-trained models** (from Hugging Face, used as they are, not retrained; licences checked on each model's page):
 
-- [Helsinki-NLP/opus-mt-zh-en](https://huggingface.co/Helsinki-NLP/opus-mt-zh-en) (Mandarin → English), CC BY 4.0, by the Language Technology Research Group at the University of Helsinki
-- [Helsinki-NLP/opus-mt-tc-base-en-sh](https://huggingface.co/Helsinki-NLP/opus-mt-tc-base-en-sh) (English → Serbo-Croatian, used for Serbian Cyrillic), CC BY 4.0, by the same group
-- [facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M) (No Language Left Behind, Mandarin → Serbian), CC BY-NC 4.0 (non-commercial use), by Meta AI
+- [Helsinki-NLP/opus-mt-zh-en](https://huggingface.co/Helsinki-NLP/opus-mt-zh-en) (baseline step 1: Mandarin → English), CC BY 4.0, by the Language Technology Research Group at the University of Helsinki (OPUS-MT)
+- [Helsinki-NLP/opus-mt-tc-base-en-sh](https://huggingface.co/Helsinki-NLP/opus-mt-tc-base-en-sh) (baseline step 2: English → Serbian; the model covers Serbian, Croatian and Bosnian), CC BY 4.0, by the same group
+- [facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M) (No Language Left Behind: Mandarin → Serbian, top 32 options), CC BY-NC 4.0, by Meta AI. Non-commercial use only: fine for a student contest project, not for a paid product.
 
-**Data:** the test sentences in [data/test_sentences.csv](data/test_sentences.csv) were written and labelled by our team for this project (the Mandarin drafted with an AI tool and corrected by a native speaker; the Serbian written by a native speaker without translation tools). No outside dataset is used.
+**Data:** our own test set, [data/test_sentences.csv](data/test_sentences.csv): 60 workplace sentences. The Mandarin was drafted with Claude (an AI tool, see below) and then checked and corrected by our team's native Mandarin speaker, who also wrote the English meaning and the labels. The correct Serbian was written by our team's native Serbian speaker, without any translation tool. No outside dataset is used. The three demo sentences in the notebook's section 8 are new and were also drafted with Claude.
 
-**Libraries:** [numpy](https://numpy.org/), [pandas](https://pandas.pydata.org/), [scikit-learn](https://scikit-learn.org/), [matplotlib](https://matplotlib.org/), [transformers](https://github.com/huggingface/transformers) (Hugging Face), [PyTorch](https://pytorch.org/), [sacrebleu](https://github.com/mjpost/sacrebleu) (for the chrF score), [sentencepiece](https://github.com/google/sentencepiece) and [sacremoses](https://github.com/hplt-project/sacremoses) (used by the translation models to split text into pieces). [TO FILL: check this list against the notebook's imports and remove any we don't use.]
+**Libraries** (everything in [requirements.txt](requirements.txt)): [numpy](https://numpy.org/), [pandas](https://pandas.pydata.org/), [matplotlib](https://matplotlib.org/), [PyTorch](https://pytorch.org/), [transformers](https://github.com/huggingface/transformers) (Hugging Face), [sentencepiece](https://github.com/google/sentencepiece) and [sacremoses](https://github.com/hplt-project/sacremoses) (used by the translation models to cut text into pieces), [sacrebleu](https://github.com/mjpost/sacrebleu) (the chrF score) and [scikit-learn](https://scikit-learn.org/) (listed in requirements.txt, but the final notebook doesn't use it). Plus Python's built-in modules, and [Google Colab](https://colab.research.google.com/) to run the notebook.
 
-**Tutorials:** [TO FILL: any tutorial or docs page we copied code from, with a link, or "None".]
+**Tutorials:** none copied. The way we call each model (the `>>srp_Cyrl<<` tag, NLLB's language codes) follows the model pages linked above.
 
-**AI tools** (name each tool and exactly what we used it for):
+**AI tools:** [Claude](https://www.anthropic.com/claude) (by Anthropic), used through Claude Code:
 
-- [TO FILL: tool]: used to draft the Mandarin test sentences, which a native Mandarin speaker then checked and corrected.
-- [TO FILL: tool, e.g. Claude Code]: used to [TO FILL: what, e.g. write and debug notebook code, which we read and can explain].
-- [TO FILL, optional: tool]: used to [TO FILL: what].
+- to draft the Mandarin test sentences and the demo sentences (our Mandarin speaker checked and corrected the test sentences);
+- for code help: writing and explaining the notebook code;
+- for debugging (for example, the broken output on Apple's GPU);
+- to help draft the notebook's explanations and this write-up.
+
+No AI tool wrote the correct Serbian answers: our Serbian speaker wrote them. Our Serbian speaker also checked and corrected every rule the picker uses.
 
 ## License
 

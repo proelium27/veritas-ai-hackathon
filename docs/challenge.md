@@ -96,9 +96,9 @@ All results on test data the model never saw.
 
 ## Kickoff email (Sat 12:00 AM, read 8:20 AM)
 
-Sent to Caleb's iCloud address at 11:49 PM Fri and forwarded to Gmail Sat morning. What it adds:
+Sent to the team lead's email at 11:49 PM Fri and forwarded to Gmail Sat morning. What it adds:
 
-- **Reply "Got it"** to the email so the organizers know it arrived. Caleb has to do this himself.
+- **Reply "Got it"** to the email so the organizers know it arrived. The coder has to do this himself.
 - **Any public dataset is allowed**, not just the ones in the briefs, as long as it's credited.
 - Each member gets a certificate, which is why the form asks for everyone's name, email and school.
 - Their advice: "A simple project that works beats an ambitious one that doesn't. If you get stuck, cut your idea in half and finish it."

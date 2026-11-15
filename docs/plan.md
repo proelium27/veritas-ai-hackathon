@@ -28,17 +28,17 @@ All three translate the same test sentences, and all are scored the same way.
 2. **Direct:** NLLB translates Mandarin straight to Serbian and we take its top answer.
 3. **Ours (direct + picker):** NLLB gives its top 8 answers. A rule-based picker reads the Serbian endings (for example -о vs -ла for "I did", Ви/сте vs ти/си for "you") and picks the first answer that matches the sentence's known speaker, listener and formality. If none matches, it uses NLLB's top answer and flags it "had to guess".
 
-**Fair-test rule:** Adam writes the picker's rules using only the ~20 rows marked "practice". The other rows are the locked "test" rows. Nobody looks at test scores until the rules are final; once we've seen them, we don't change the rules to chase a better number (or, if we do, we say so in the log and the write-up).
+**Fair-test rule:** the Serbian speaker writes the picker's rules using only the ~20 rows marked "practice". The other rows are the locked "test" rows. Nobody looks at test scores until the rules are final; once we've seen them, we don't change the rules to chase a better number (or, if we do, we say so in the log and the write-up).
 
-**How we score:** chrF (a standard translation score from the sacrebleu library, comparing our Serbian to Adam's correct Serbian letter by letter), % with the right speaker gender, % with the right formality, how often the right form is somewhere in NLLB's 8 options (the best the picker could ever do), how often the "had to guess" flag is right, and the 3-5 worst misses shown side by side with why.
+**How we score:** chrF (a standard translation score from the sacrebleu library, comparing our Serbian to the Serbian speaker's correct Serbian letter by letter), % with the right speaker gender, % with the right formality, how often the right form is somewhere in NLLB's 8 options (the best the picker could ever do), how often the "had to guess" flag is right, and the 3-5 worst misses shown side by side with why.
 
 **Optional improvement (Phase 6):** add a gender hint to the Mandarin input (for example 她说： "she said:") and check whether NLLB then gets the gender right on its own.
 
 ## Who does what
 
-- **Adam (Serbian):** writes the correct Serbian (Cyrillic) for every test sentence, and the picker's rules about Serbian endings, using only the practice rows. Checks that options make sense in meaning, not just endings.
-- **David (Mandarin):** writes the Mandarin sentences, their English meaning, and the labels (speaker gender, listener gender, formality, practice/test).
-- **Caleb (code):** the notebook: loading the models and data, running the three systems, scoring, and the demo cell.
+- **Serbian speaker:** writes the correct Serbian (Cyrillic) for every test sentence, and the picker's rules about Serbian endings, using only the practice rows. Checks that options make sense in meaning, not just endings.
+- **Mandarin speaker:** writes the Mandarin sentences, their English meaning, and the labels (speaker gender, listener gender, formality, practice/test).
+- **Coder:** the notebook: loading the models and data, running the three systems, scoring, and the demo cell.
 - **Whole team:** the write-up, the video, the final checks and submitting. All three of us must be able to explain every part.
 
 The day-to-day checklist lives in the team Google Doc "Lost in Translation: Team Checklist".
@@ -49,9 +49,9 @@ The day-to-day checklist lives in the team Google Doc "Lost in Translation: Team
 |---|---|---|
 | 0. Lock it in | Track, idea, roles and the three systems agreed | Done |
 | 1. Model check | All three models load in Colab with no sign-in; NLLB's 8 options do include the feminine and formal forms ([model_check.ipynb](../notebook/model_check.ipynb), results in [log.md](log.md)) | Done |
-| 2. Test set | David writes 60-80 workplace sentences with labels; Adam writes the correct Serbian; ~20 rows marked practice, the rest test; saved as `data/test_sentences.csv` | In progress |
+| 2. Test set | The Mandarin speaker writes 60-80 workplace sentences with labels; the Serbian speaker writes the correct Serbian; ~20 rows marked practice, the rest test; saved as `data/test_sentences.csv` | In progress |
 | 3. Notebook | Load the CSV, run the baseline and NLLB direct on every row, score them | To do |
-| 4. Picker | Adam's rules on the practice rows; NLLB top 8 + picker on every row | To do |
+| 4. Picker | The Serbian speaker's rules on the practice rows; NLLB top 8 + picker on every row | To do |
 | 5. Honest testing | Score all three on the test rows only; flag accuracy; 3-5 worst misses with reasons; log the numbers, including failures | To do |
 | 6. Optional improvement | Gender hint in the Mandarin input; report it as a separate row in the results | Only if time |
 | 7. Deliverables | Demo cell, limits and credits, fresh-Colab Run all check, write-up, video, submit | To do |
@@ -88,7 +88,7 @@ A website or server is optional. If we build one, it does the same thing as the 
 ## Workflow
 
 1. **Pick the idea:** done (see above and log.md).
-2. **Data:** David and Adam fill in the test-set CSV; it's committed to `data/` so the notebook can load it from the repo.
+2. **Data:** the Mandarin speaker and the Serbian speaker fill in the test-set CSV; it's committed to `data/` so the notebook can load it from the repo.
 3. **Build:** Claude Code on the notebook in this shared GitHub repo, opened in Colab. Only one person edits `notebook/model.ipynb`; others work in their own Colab copies and send sections over.
 4. **Test:** run it in Colab and log real results, including failures, in docs/log.md.
 5. **Understand it:** have Claude Code explain each part so all of us can answer questions.
@@ -102,7 +102,7 @@ A website or server is optional. If we build one, it does the same thing as the 
 |---|---|
 | Sat morning | Track and idea picked, roles set (done); Phase 1 model check (done) |
 | Sat afternoon | Phase 2: test set written and labelled; Phase 3: notebook sections 0-5 working on it |
-| Sat evening | Phase 3-4: NLLB direct scored; Adam's picker rules written on the practice rows |
+| Sat evening | Phase 3-4: NLLB direct scored; the Serbian speaker's picker rules written on the practice rows |
 | Sun morning | Phase 5: score all three on the test rows; find and explain the worst misses; log the numbers |
 | Sun afternoon | Phase 6 if time; demo cell, limits and credits; fresh-Colab Run all check; write-up draft |
 | Sun evening | Phase 7: record video, final checks, submit by 10:59 PM |

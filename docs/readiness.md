@@ -11,7 +11,7 @@ Contents: [1. Accounts](#1-accounts-and-access-checklist) | [2. Workflow how-tos
 ## Do these tonight (Fri Nov 13)
 
 - [ ] **Registration closes tonight at 11:59 PM ET.** Confirm all three teammates are added.
-- [ ] Everyone sends Caleb their GitHub username. The repo is created at kickoff (nothing is committed before then), and Caleb sends the invites right away.
+- [ ] Everyone sends the coder their GitHub username. The repo is created at kickoff (nothing is committed before then), and the coder sends the invites right away.
 - [ ] Everyone finishes their own account checklist below.
 - [ ] Everyone does the practice steps in section 2 so none of it is new at 3 AM.
 - [ ] Pick one group chat and one video-call link for the weekend.
@@ -23,7 +23,7 @@ Contents: [1. Accounts](#1-accounts-and-access-checklist) | [2. Workflow how-tos
 ### Everyone (all three of us)
 
 **GitHub**
-- [ ] Have a GitHub account. Tell Caleb your username.
+- [ ] Have a GitHub account. Tell the coder your username.
 - [ ] At kickoff, accept the collaborator invite to the private repo `proelium27/veritas-ai-hackathon` (it does not exist before then):
   1. Open the email from GitHub titled something like "Invitation to collaborate on proelium27/veritas-ai-hackathon" and click **View invitation**. No email? Go straight to `github.com/proelium27/veritas-ai-hackathon/invitations` while signed in.
   2. Click **Accept invitation**.
@@ -38,7 +38,7 @@ Contents: [1. Accounts](#1-accounts-and-access-checklist) | [2. Workflow how-tos
 
 **Hugging Face** (where we store the trained model, and where many pre-trained models come from)
 - [ ] Make an account at `huggingface.co` and confirm your email.
-- [ ] Tell Caleb your username.
+- [ ] Tell the coder your username.
 
 **YouTube**
 - [ ] Have a Google account that can upload to YouTube. Open `studio.youtube.com` once and click through any "create a channel" prompt. Do not leave this for Sunday night.
@@ -49,9 +49,9 @@ Contents: [1. Accounts](#1-accounts-and-access-checklist) | [2. Workflow how-tos
 |---|---|
 | **Teammate 2 (notebook owner)** | Create the Hugging Face **write token** (below) and store it in Colab Secrets. This person uploads the trained model. |
 | **Teammate 3 (data, write-up, video)** | Own the YouTube upload. Pick a backup uploader in case their account has trouble. |
-| **Caleb (repo owner)** | Create the repo and add collaborators at kickoff; make the repo public before submitting. Steps below. |
+| **Coder (repo owner)** | Create the repo and add collaborators at kickoff; make the repo public before submitting. Steps below. |
 
-### Hugging Face write token (Teammate 2; Caleb too if he will also upload)
+### Hugging Face write token (Teammate 2; the coder too if he will also upload)
 
 A token is a password for tools. A **write** token lets the notebook upload the trained model.
 
@@ -75,7 +75,7 @@ Two things to remember:
 - Secrets belong to *your* Google account. Other teammates, and the judges, will not have your token. Build the notebook so that it **still runs top to bottom without a token**: the "upload to Hugging Face" step should be skipped, or fail politely, when no token exists. A notebook that crashes for a judge on that step costs us points.
 - Make the uploaded model repo **public** so the server and the judges can download it without a token.
 
-### Caleb: repo owner tasks
+### Coder: repo owner tasks
 
 **Add the collaborators (at kickoff, right after the commander creates the repo)**
 - [ ] On GitHub open the repo, then **Settings > Collaborators > Add people**.
@@ -224,7 +224,7 @@ Set up first: all three on one video call, a shared doc or `docs/plan.md` open, 
 | **0:00-0:10** | **Read the challenge.** Everyone reads the official text silently first, then reads the key lines out loud together. Note: the track, what the task actually asks for, any starter kit or provided dataset, required formats, **where to submit**, and any rule that differs from our notes. | Official text pasted into the "Fill in at kickoff" block of `docs/plan.md`. `docs/competition.md` updated if the rules differ. |
 | **0:10-0:20** | **Frame the problem.** Answer together: What goes in? What comes out? Who is the user? Which of the four types in section 3 is it? What would "it works" mean in numbers? | Two sentences: the problem, and the input-to-output. |
 | **0:20-0:35** | **Brainstorm ideas.** Each person pitches one or two ideas in 2-3 minutes each, no arguing yet. Then give every idea 1-5 on the judging table: *Technical execution* (can we build and score it on free Colab?), *Originality* (a specific angle, not a tutorial), *Impact and track fit* (who it helps, tied to the challenge), *Testing and honesty* (is there a clear baseline and test set?), *Communication* (could all three of us explain it?). | A short list with scores. Top 2 ideas circled. |
-| **0:35-0:50** | **Find the data**, in parallel. Teammate 3 and Caleb search; Teammate 2 checks the starter kit if there is one. Good places: the starter kit first, then Hugging Face Datasets, Kaggle, the UCI repository, Google Dataset Search. Test each candidate against the checklist below. | A link and license for the dataset behind each of the top 2 ideas. |
+| **0:35-0:50** | **Find the data**, in parallel. Teammate 3 and the coder search; Teammate 2 checks the starter kit if there is one. Good places: the starter kit first, then Hugging Face Datasets, Kaggle, the UCI repository, Google Dataset Search. Test each candidate against the checklist below. | A link and license for the dataset behind each of the top 2 ideas. |
 | **0:50-0:55** | **Decide.** Pick one idea, and name the fallback. Set the trip-wire: if the data will not load, or the baseline is not working by a fixed time (say Sat 11:00 AM), switch to the fallback without a long debate. | One decision and one fallback. |
 | **0:55-1:00** | **Lock it in.** Fill in the plan block (track, challenge, idea, dataset with link and license, where to submit). Add a "Decisions" line to `docs/log.md`. Paste the kickoff prompt from `docs/plan.md` (with the challenge text) into Claude Code. Teammate 2 opens a fresh Colab notebook. Agree when you next check in. | Plan filled in. Repo layout being created. Everyone knows their next task. |
 
