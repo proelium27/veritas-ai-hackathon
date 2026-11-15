@@ -10,3 +10,4 @@ torch
 sentencepiece
 sacremoses
 sacrebleu
+gradio   # only for the demo page, app/demo.py (the notebook does not use it)
