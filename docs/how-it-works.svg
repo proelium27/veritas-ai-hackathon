@@ -37,9 +37,9 @@
 <text x="230" y="235" font-size="16" font-weight="600" fill="#2B2723">NLLB writes 32 Serbian options</text>
 <text x="230" y="257" font-size="14" fill="#6E685F">most likely first</text>
 <g font-family="'Iowan Old Style', Charter, Georgia, serif" font-size="16">
-<text x="560" y="234" fill="#A39D94"><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">1</tspan><tspan dx="6"></tspan> Ja sam pregledao ovu mašinu</text>
-<text x="560" y="256" fill="#A39D94"><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">2</tspan><tspan dx="6"></tspan> Proverio sam ovu mašinu</text>
-<text x="560" y="278" fill="#2B2723"><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">14</tspan><tspan dx="6"></tspan> Već sam proverila ovu mašinu</text>
+<text x="560" y="234" fill="#A39D94"><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">1</tspan><tspan dx="6">J</tspan>a sam pregledao ovu mašinu</text>
+<text x="560" y="256" fill="#A39D94"><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">2</tspan><tspan dx="6">P</tspan>roverio sam ovu mašinu</text>
+<text x="560" y="278" fill="#2B2723"><tspan font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">14</tspan><tspan dx="6">V</tspan>eć sam proverila ovu mašinu</text>
 </g>
 
 <text x="230" y="325" font-size="16" font-weight="600" fill="#2B2723">Find the helper word</text>
