@@ -32,7 +32,7 @@ then open http://127.0.0.1:7860 in a browser. The page only works on your own co
 (no public link). Stop it with Ctrl+C.
 
 In Google Colab, in a new notebook, one cell:
-    !pip install -q gradio sentencepiece sacremoses sacrebleu
+    !pip install -q "gradio>=4,<6" sentencepiece sacremoses sacrebleu
     !wget -q -O demo.py https://raw.githubusercontent.com/proelium27/veritas-ai-hackathon/main/app/demo.py
     %run demo.py
 Gradio prints a public link ending in .gradio.live: open it in a new tab. (Colab doesn't have the repo, so this file downloads the
@@ -446,4 +446,8 @@ if __name__ == "__main__":
     # share=True makes Gradio print a temporary public link (ending in .gradio.live, works for
     # about 72 hours) that you open in a new tab. Anyone with that link can use the page.
     in_colab = "google.colab" in sys.modules
-    demo.queue().launch(share=in_colab, show_api=False)
+    try:
+        demo.queue().launch(share=in_colab, show_api=False)
+    except TypeError:
+        # Newer Gradio versions dropped the show_api option; launch without it.
+        demo.queue().launch(share=in_colab)
