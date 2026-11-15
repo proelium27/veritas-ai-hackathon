@@ -35,7 +35,7 @@ In Google Colab, in a new notebook, one cell:
     !pip install -q gradio sentencepiece sacremoses sacrebleu
     !wget -q -O demo.py https://raw.githubusercontent.com/proelium27/veritas-ai-hackathon/main/app/demo.py
     %run demo.py
-The page appears under the cell. (Colab doesn't have the repo, so this file downloads the
+Gradio prints a public link ending in .gradio.live: open it in a new tab. (Colab doesn't have the repo, so this file downloads the
 notebook from GitHub.)
 
 The first start downloads the three models (about 3 GB). After that, starting takes
@@ -48,6 +48,7 @@ import html             # makes model output safe to put inside a web page
 import io               # a "file" that lives in memory (for the caught printout)
 import json             # a .ipynb notebook file is JSON
 import os
+import sys              # to tell whether we are running inside Google Colab
 import threading        # loads the models in the background while the page is already open
 import time
 import urllib.request   # downloads the notebook when it isn't on this computer (Colab)
@@ -440,6 +441,9 @@ with gr.Blocks(title="Lost in Translation", css=CSS, js=FORCE_LIGHT,
 if __name__ == "__main__":
     print("Loading the notebook's code and the three models (the page opens meanwhile)...")
     threading.Thread(target=load_notebook_code, daemon=True).start()
-    # share=False: no public link. On a laptop the page is only at http://127.0.0.1:7860.
-    # In Colab, Gradio shows the page under the cell instead.
-    demo.queue().launch(share=False, show_api=False)
+    # On a laptop: no public link; the page is only at http://127.0.0.1:7860.
+    # In Colab: the page runs on Google's computer, so your browser can't reach it directly.
+    # share=True makes Gradio print a temporary public link (ending in .gradio.live, works for
+    # about 72 hours) that you open in a new tab. Anyone with that link can use the page.
+    in_colab = "google.colab" in sys.modules
+    demo.queue().launch(share=in_colab, show_api=False)
