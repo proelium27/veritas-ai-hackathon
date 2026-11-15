@@ -94,7 +94,12 @@ We use three pre-trained translation models as they are (no training) and compar
 
 1. **Baseline (through English):** Mandarin → English with opus-mt-zh-en, then English → Serbian with opus-mt-tc-base-en-sh. This is how many apps work.
 2. **NLLB direct:** Meta's NLLB model translates Mandarin straight to Serbian, and we take its top answer.
-3. **Ours:** NLLB lists its top 32 answers. Our picker checks the Serbian endings of each one and picks the first that matches the speaker, listener and formality. If none matches, we use NLLB's top answer and flag it "had to guess". [TO FILL: one sentence on the repair rules if we add them: what they change and when they run.]
+3. **Ours:** NLLB lists its top 32 answers, and our picker makes two decisions:
+   - **Match:** it checks the Serbian endings of each answer and picks the first one that fits the speaker, listener and formality.
+   - **Repair:** if none fits, repair rules written by our Serbian speaker try to fix the endings of each answer, best first, and keep the first fix that fits (for example *dodao → dodala* for a woman, *Vi → ti* for casual).
+   - If neither works, it shows NLLB's top answer with a "had to guess" warning.
+
+![Flowchart: NLLB writes 32 options; Match asks "does an option fit?" (yes: pick it, 37 of 40 test sentences); if not, Repair asks "can a rule fix it?" (yes: fix the ending, 2 of 40); if not, show the best guess with a warning (1 of 40).](docs/how-it-works.svg)
 
 The models write Serbian in Cyrillic, so the notebook converts every output to Latin letter for letter before checking or scoring it.
 

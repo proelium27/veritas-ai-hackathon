@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="540" viewBox="0 0 680 540" role="img" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>How the picker decides</title>
+<desc>NLLB writes 32 Serbian options. Match: does an option fit who is talking? Yes: pick it (37 of 40 test sentences). No: Repair: can a rule fix the ending? Yes: fix it (2 of 40). No: show the best guess with a warning (1 of 40).</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="680" height="540" fill="#FFFFFF"/>
+<g stroke="#5F5E5A" stroke-width="1.2" fill="none" marker-end="url(#arrow)">
+<line x1="250" y1="76" x2="250" y2="98"/>
+<line x1="250" y1="144" x2="250" y2="172"/>
+<line x1="368" y1="220" x2="448" y2="220"/>
+<line x1="250" y1="265" x2="250" y2="308"/>
+<line x1="368" y1="355" x2="448" y2="355"/>
+<line x1="250" y1="400" x2="250" y2="440"/>
+</g>
+<g font-size="14" text-anchor="middle" dominant-baseline="central">
+<rect x="110" y="20" width="280" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.6"/>
+<text x="250" y="38" fill="#444441" font-weight="600">Mandarin + who's talking</text>
+<text x="250" y="58" fill="#5F5E5A" font-size="12">woman speaker, casual</text>
+<rect x="110" y="100" width="280" height="44" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.6"/>
+<text x="250" y="122" fill="#444441" font-weight="600">NLLB writes 32 Serbian options</text>
+<polygon points="132,220 250,175 368,220 250,265" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
+<text x="250" y="212" fill="#3C3489" font-weight="600">Match</text>
+<text x="250" y="230" fill="#534AB7" font-size="12">Does an option fit?</text>
+<rect x="450" y="192" width="190" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.6"/>
+<text x="545" y="210" fill="#085041" font-weight="600">Pick that option</text>
+<text x="545" y="230" fill="#0F6E56" font-size="12">37 of 40 sentences</text>
+<polygon points="132,355 250,310 368,355 250,400" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
+<text x="250" y="347" fill="#3C3489" font-weight="600">Repair</text>
+<text x="250" y="365" fill="#534AB7" font-size="12">Can a rule fix it?</text>
+<rect x="450" y="327" width="190" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.6"/>
+<text x="545" y="345" fill="#085041" font-weight="600">Fix the ending</text>
+<text x="545" y="365" fill="#0F6E56" font-size="12">2 of 40 sentences</text>
+<rect x="110" y="442" width="280" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.6"/>
+<text x="250" y="460" fill="#712B13" font-weight="600">Show best guess + warning</text>
+<text x="250" y="480" fill="#993C1D" font-size="12">1 of 40 sentences</text>
+</g>
+<g font-size="12" fill="#5F5E5A">
+<text x="408" y="208" text-anchor="middle">yes</text>
+<text x="408" y="343" text-anchor="middle">yes</text>
+<text x="262" y="290">no</text>
+<text x="262" y="424">no</text>
+<text x="340" y="524" text-anchor="middle">40 test sentences check gender or formality (5 controls have nothing to check)</text>
+</g>
+</svg>
