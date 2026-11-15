@@ -104,15 +104,27 @@ Rows where `detect()` couldn't read the gender or formality at all are left out 
 
 *Practice rows (15, the ones the rules were written on, so they flatter us), as baseline / NLLB direct / ours: chrF 54.5 / 35.6 / 35.7, gender 71.4% / 57.1% / 100.0%, formality 50.0% / 62.5% / 100.0%.*
 
-**Headline finding:** the two usual routes mostly fall back to the man's form. They got the gender right on 9 of 21 and 8 of 20 test sentences; ours got 26 of 26. That is exactly the mistake our user can't spot on their own.
+**Headline finding:** the two usual routes mostly fall back to the man's form. They got the gender right on 9 of 21 and 8 of 20 test sentences; ours got 26 of 26. That is exactly the mistake our user can't spot on their own. **But** our Serbian speaker's hand check (below) shows the route through English keeps the meaning far better: 41 of 45 against our 27. We fix the endings, not the words.
 
 **Read these numbers carefully:**
 
-- **Partly circular.** Gender and formality are graded by `detect()`, the same reader the picker uses to choose, so our 100% is partly built in. `detect()` did read all 45 of our own correct test sentences right.
+- **Partly circular.** Gender and formality are graded by `detect()`, the same reader the picker uses to choose, so our 100% is partly built in. `detect()` did read all 45 of our own correct test sentences right, and our Serbian speaker's hand check agrees on the endings (below).
 - **Chance.** A bootstrap check (2,000 resamples of the 45 test rows) says our gender lead over NLLB direct is bigger than chance (+60.0 points, 95% interval +36.8 to +81.2). The formality lead isn't (+15.8 points, interval +0.0 to +33.3, which touches 0).
 - **chrF** only shows the three systems are close. It compares letters, so it can't tell a wrong ending from a wrong word, and on the practice rows the baseline won it, 54.5 to 35.7.
 
-**Human check (the fair test).** Our Serbian speaker is reading every test answer from all three systems by hand, for meaning and for endings. [TO FILL after the human check: meaning right X/45, endings right Y/40 for each system]
+**Human check (the fair test).** Our native Serbian speaker read all 135 test answers (45 rows × 3 systems) next to the English meaning and marked each one y or n for meaning and for endings (notebook section 7.5; the marks are in [data/human_check.csv](data/human_check.csv)).
+
+| System | Meaning right | Endings right | Meaning and endings both right |
+|---|---|---|---|
+| Baseline (through English) | **91.1% (41/45)** | 47.5% (19/40) | 44.4% (20/45) |
+| NLLB direct | 51.1% (23/45) | 47.5% (19/40) | 31.1% (14/45) |
+| Ours (NLLB top 32 + picker) | 60.0% (27/45) | **95.0% (38/40)** | **57.8% (26/45)** |
+
+- **Endings hold up.** Our speaker's endings marks match `detect()` almost exactly (19/40 for both other systems; 38/40 for ours against `detect()`'s 39/40). So our ending result isn't just built in.
+- **Meaning: the route through English is clearly better.** Ours is 31.1 points behind, 95% interval −46.7 to −15.6 (bootstrap, 2,000 resamples), so this is not chance. Our wrong meanings come from NLLB's options (*šapku* "cap" for helmet, *tabela* "table" for badge, *vinkar* for forklift). The picker reads endings, not words.
+- **Both right:** we lead the baseline by 13.3 points, but the interval (−8.9 to +33.3) crosses 0, so we can't tell. We beat NLLB direct by 26.7 points (+13.3 to +40.0).
+- **Choosing never hurt the meaning:** next to NLLB's own top answer, the picker fixed the meaning on 4 rows and broke it on none.
+- **Caveats:** one judge, and the sheet showed which system wrote each answer, so the check wasn't blind. We kept every mark as entered. One looks like a slip (t20: our answer is word for word the correct Serbian but is marked "endings wrong"); counted as right, ours would be 39/40 on endings.
 
 ## Where it fails
 
@@ -126,6 +138,7 @@ Three of the five real misses we found on the test rows, each a different kind o
 
 The full list, with examples, is in section 10 of the notebook.
 
+- **Worse meaning than the route through English:** in our Serbian speaker's hand check the meaning was right for 27 of 45 of our answers against 41 of 45 through English, and on 16 of our 18 wrong-meaning answers the endings were still right. This is our biggest limit.
 - **Small test set:** 60 sentences, 15 practice and 45 test, so each test percentage moves by 2 to 3 points per sentence.
 - **Endings, not words:** the picker can only choose among NLLB's 32 options and repair only changes endings, so a wrong word or a broken tense stays (t11, t08).
 - **NLLB's own mistakes:** made-up words (*vinkar* for forklift, *Sastanao sam*), words and letters from neighbouring languages (Macedonian ѓ, Russian-looking *opozdao*, Croatian- or Bosnian-style phrasing), and once a breakdown into *Ne, ne, ne…* (t30).
@@ -148,6 +161,7 @@ The full list, with examples, is in section 10 of the notebook.
 | [notebook/model_check.ipynb](notebook/model_check.ipynb) | First check: do the three models load with no sign-in, how fast are they, and do NLLB's options include the forms we need? |
 | [notebook/more_options.ipynb](notebook/more_options.ipynb) | Experiment: does NLLB's top 8, 16 or 32 include a form that fits the labels? |
 | [data/test_sentences.csv](data/test_sentences.csv) | Our test set: Mandarin, English meaning, correct Serbian, the labels, and whether each row is for practice or testing. |
+| [data/human_check.csv](data/human_check.csv) | Our Serbian speaker's y/n marks (meaning right? endings right?) for every system's answer on the 45 test rows, with the answers they read. |
 | [data/README.md](data/README.md) | How the test set was written, and the rules for filling it in. |
 | [docs/plan.md](docs/plan.md) | The plan: the three systems, build order, notebook sections and timeline. |
 | [docs/log.md](docs/log.md) | Decisions and real results, including failures. |
@@ -166,7 +180,7 @@ Earlier ideas we considered before picking this one are in [docs/kickoff-brief.m
 - [Helsinki-NLP/opus-mt-tc-base-en-sh](https://huggingface.co/Helsinki-NLP/opus-mt-tc-base-en-sh) (baseline step 2: English → Serbian; the model covers Serbian, Croatian and Bosnian), CC BY 4.0, by the same group
 - [facebook/nllb-200-distilled-600M](https://huggingface.co/facebook/nllb-200-distilled-600M) (No Language Left Behind: Mandarin → Serbian, top 32 options), CC BY-NC 4.0, by Meta AI. Non-commercial use only: fine for a student contest project, not for a paid product.
 
-**Data:** our own test set, [data/test_sentences.csv](data/test_sentences.csv): 60 workplace sentences. The Mandarin was drafted with Claude (an AI tool, see below) and then checked and corrected by our team's native Mandarin speaker, who also wrote the English meaning and the labels. The correct Serbian was written by our team's native Serbian speaker, without any translation tool. No outside dataset is used. The three demo sentences in the notebook's section 8 are new and were also drafted with Claude.
+**Data:** our own test set, [data/test_sentences.csv](data/test_sentences.csv): 60 workplace sentences. The Mandarin was drafted with Claude (an AI tool, see below) and then checked and corrected by our team's native Mandarin speaker, who also wrote the English meaning and the labels. The correct Serbian was written by our team's native Serbian speaker, without any translation tool. The hand check of the test answers, [data/human_check.csv](data/human_check.csv), is also our Serbian speaker's own work. No outside dataset is used. The three demo sentences in the notebook's section 8 are new and were also drafted with Claude.
 
 **Libraries** (everything in [requirements.txt](requirements.txt)): [numpy](https://numpy.org/), [pandas](https://pandas.pydata.org/), [matplotlib](https://matplotlib.org/), [PyTorch](https://pytorch.org/), [transformers](https://github.com/huggingface/transformers) (Hugging Face), [sentencepiece](https://github.com/google/sentencepiece) and [sacremoses](https://github.com/hplt-project/sacremoses) (used by the translation models to cut text into pieces), [sacrebleu](https://github.com/mjpost/sacrebleu) (the chrF score) and [scikit-learn](https://scikit-learn.org/) (listed in requirements.txt, but the final notebook doesn't use it). For the demo page only: [Gradio](https://www.gradio.app/) (Apache 2.0), which builds the web page in [app/demo.py](app/demo.py). Plus Python's built-in modules, and [Google Colab](https://colab.research.google.com/) to run the notebook.
 
