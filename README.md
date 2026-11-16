@@ -8,7 +8,7 @@ For a Mandarin speaker writing to Serbian colleagues at work: type a Mandarin se
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/proelium27/veritas-ai-hackathon/blob/main/notebook/model.ipynb)
 
-Click **Runtime → Run all**. No sign-in, keys or uploads; a GPU is optional. About 1.5 minutes on a CPU after the first model download. **Demo app** (optional): `python app/demo.py` ([how to run it](docs/details.md#demo-app)).
+Click **Runtime → Run all**. No sign-in, keys or uploads; a GPU is optional. The first run in a fresh Colab session also downloads about 3 GB of models (a few minutes); after that it takes about 1.5 minutes on a CPU. **Demo app** (optional): `python app/demo.py` ([how to run it](docs/details.md#demo-app)).
 
 ## The problem
 
@@ -29,7 +29,7 @@ We started from the brief's suggested "Translation quality test" (NLLB, scored w
 - **Our question:** can choosing among a model's own options fix what going through English loses, without retraining?
 - **A human check** of every test answer, by that speaker.
 
-NLLB usually knows the right form but doesn't rank it first: for 37 of the 40 test sentences that check an ending, a fitting option was in its top 32.
+NLLB usually knows the right form but doesn't rank it first: for 37 of the 40 test sentences that check an ending, a fitting option was in its top 32. Repair fixed 2 more, which is why ours gets 39 of 40 below.
 
 ## How it works
 
@@ -43,7 +43,7 @@ Three systems, from pre-trained models used as they are:
 
 **The rules, in short:** gender shows in the word next to *sam* (I am) or *si* (you are), and formality in the word for "you" (*Vi*, *Vaš* formal; *ti*, *tvoj* casual). Match reads those words and Repair rewrites them. Our Serbian speaker checked and corrected every rule, and the notebook tests them on 50 and 49 hand-written examples.
 
-**Data:** [data/test_sentences.csv](data/test_sentences.csv), written by our team (see credits). We built the rules on 15 practice rows, froze them (commit `ad6b1a7`), then scored the 45 test rows once.
+**Data:** [data/test_sentences.csv](data/test_sentences.csv): Claude drafted the Mandarin, our Mandarin speaker checked it, and our Serbian speaker wrote the correct Serbian (see credits). We built the rules on 15 practice rows, froze them (commit `ad6b1a7`), then scored the 45 test rows once.
 
 | Test row t09, said by a woman | Through English | NLLB direct | Ours | Correct |
 |---|---|---|---|---|
@@ -69,9 +69,12 @@ Ours gets the endings right twice as often as either usual route and has the mos
 | NLLB direct | 39.3 | 40.0% (8/20) | 84.2% (16/19) | 47.5% (19/40) |
 | Ours (NLLB top 32 + picker) | 43.1 | 100.0% (26/26) | 100.0% (21/21) | 97.5% (39/40) |
 
+Totals differ by system because `detect()` skips rows where it can't read the ending in that system's answer.
+
 **Caveats:**
 
 - **The automatic gender and formality scores are partly circular.** They are graded by `detect()`, the same code our picker uses to choose. The human check doesn't use `detect()`, and the two agree on 119 of 120 endings grades.
+- **The human check wasn't blind:** our Serbian speaker saw which system wrote each answer, and also wrote the correct Serbian and checked our rules.
 - **The test is small:** 45 sentences and one grader. A bootstrap check says our gender lead over NLLB direct is bigger than chance (+60.0 points, 95% interval +36.8 to +81.2). Our formality lead isn't (+15.8, interval +0.0 to +33.3).
 - **One grade may be a slip.** For t20, ours gave *Da li si umoran?*, word for word our correct Serbian, but it was marked wrong on endings. We count it as graded.
 

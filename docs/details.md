@@ -11,6 +11,7 @@ The one-page write-up is the [README](../README.md). This page has the longer ve
 | [notebook/experiments/more_options.ipynb](../notebook/experiments/more_options.ipynb) | Experiment: does NLLB's top 8, 16 or 32 include a form that fits the labels? |
 | [data/test_sentences.csv](../data/test_sentences.csv) | Our test set: Mandarin, English meaning, correct Serbian, the labels, and whether each row is for practice or testing. |
 | [data/human_check.csv](../data/human_check.csv) | Our Serbian speaker's hand grades (meaning right, endings right) of all three systems' answers on the 45 test rows. |
+| [data/draft_mandarin_60.csv](../data/draft_mandarin_60.csv) | The first AI draft of the test set, used only by `experiments/more_options.ipynb`. |
 | [data/README.md](../data/README.md) | How the test set was written, the rules for filling it in, and what the human check file holds. |
 | [data/check_test_set.py](../data/check_test_set.py) | Checks the test set for mistakes (missing cells, Cyrillic letters, missing č/ć/š/ž/đ marks, 您/你 that don't match the formality label). |
 | [docs/how-it-works.svg](how-it-works.svg) | The flowchart in the README. |
