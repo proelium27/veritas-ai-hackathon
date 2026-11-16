@@ -1,6 +1,6 @@
 """
-Lost in Translation: the demo page
-==================================
+Blok 70: the demo page
+======================
 
 What this file does
 -------------------
@@ -390,9 +390,9 @@ FORCE_LIGHT = """
 LOADING_MESSAGE = ("⏳ **Loading the three models...** The first time, this downloads about 3 GB "
                    "and can take several minutes. After that it takes about half a minute.")
 
-with gr.Blocks(title="Lost in Translation", css=CSS, js=FORCE_LIGHT,
+with gr.Blocks(title="Blok 70", css=CSS, js=FORCE_LIGHT,
                theme=gr.themes.Soft(primary_hue="indigo", text_size=gr.themes.sizes.text_lg)) as demo:
-    gr.Markdown("# Lost in Translation", elem_id="title")
+    gr.Markdown("# Blok 70", elem_id="title")
     gr.Markdown("Mandarin → Serbian that keeps who's talking: the speaker's gender, the listener's "
                 "gender and formality. **A prototype** we built in a 48-hour contest.", elem_id="subtitle")
 
