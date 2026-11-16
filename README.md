@@ -1,4 +1,4 @@
-# Blok 70: Mandarin to Serbian that keeps who's talking
+# Blok 70: Mandarin to Serbian translation that gets the speaker right
 
 *Named after Blok 70 in New Belgrade, the neighbourhood best known for Belgrade's Chinese community and market, where Mandarin and Serbian meet every day.*
 
