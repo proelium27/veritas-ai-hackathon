@@ -29,3 +29,16 @@ node_modules/
 
 # Notebook run outputs (regenerated on every run)
 notebook/outputs/
+
+# Internal team notes: kept on our laptops, not in the public repo
+CLAUDE.md
+docs/challenge.md
+docs/competition.md
+docs/research.md
+docs/readiness.md
+docs/plan.md
+docs/kickoff-brief.md
+docs/data-options.md
+docs/sharing.md
+docs/writeup.md
+docs/final-checklist.md

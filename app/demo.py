@@ -4,42 +4,42 @@ Lost in Translation: the demo page
 
 What this file does
 -------------------
-It opens a small web page (made with Gradio) where you type a Mandarin sentence, choose
-who is speaking, who they are talking to and whether it's formal, and see three Serbian
+It opens a small web page (made with Gradio). You type a Mandarin sentence, choose who is
+speaking, who they are talking to and whether it's formal, and see three Serbian
 translations side by side: through English (the baseline), NLLB direct, and ours
-(NLLB + our picker). We use it to film the demo video.
+(NLLB + our picker). We used it to film the demo video.
 
-The graded project is notebook/model.ipynb. This page is an extra: it changes no score.
+The graded project is notebook/model.ipynb. This page is an extra and changes no score.
 
 Why a plain Python file, and why it reads the notebook
 ------------------------------------------------------
-- One file you can read top to bottom, and it runs the same way on a laptop and in Colab.
-- It holds NO translation rules. It opens notebook/model.ipynb and runs the notebook cells
-  that define to_latin(), detect(), repair(), pick() and translate_one(). So the notebook
-  stays the one place where the rules live: change a rule there, and this page changes too.
+- It's one file you can read top to bottom, and it runs the same way on a laptop and in Colab.
+- It has no translation rules of its own. It opens notebook/model.ipynb and runs the cells
+  that define to_latin(), detect(), repair(), pick() and translate_one(). The rules live
+  only in the notebook, so if you change a rule there, this page changes too.
 - It skips the cells that translate and score our 60 test sentences (sections 6, 7 and 9,
   and most of 3, 4 and 5), so it starts faster and uses less memory.
-- To fill in the page, it calls the notebook's own translate_one(). While translate_one()
-  runs, we note down what two of its helpers, translate() and pick(), hand back (see
-  translate_and_record below). So the cards show exactly the answers the notebook prints.
+- To fill in the page, it calls the notebook's own translate_one(). While that runs, we
+  write down what two of its helpers, translate() and pick(), return (see
+  translate_and_record below), so the cards show exactly the answers the notebook prints.
 
 How to run it
 -------------
 On a laptop, from the repo's top folder:
     pip install -r requirements.txt
     python app/demo.py
-then open http://127.0.0.1:7860 in a browser. The page only works on your own computer
-(no public link). Stop it with Ctrl+C.
+then open http://127.0.0.1:7860 in a browser. The page is only on your own computer;
+there is no public link. Stop it with Ctrl+C.
 
-In Google Colab, in a new notebook, one cell:
+In Google Colab, put this in one cell of a new notebook and run it:
     !pip install -q "gradio>=4,<6" sentencepiece sacremoses sacrebleu
     !wget -q -O demo.py https://raw.githubusercontent.com/proelium27/veritas-ai-hackathon/main/app/demo.py
     %run demo.py
-Gradio prints a public link ending in .gradio.live: open it in a new tab. (Colab doesn't have the repo, so this file downloads the
-notebook from GitHub.)
+Gradio prints a public link ending in .gradio.live. Open it in a new tab. Colab doesn't
+have the repo, so this file downloads the notebook from GitHub.
 
-The first start downloads the three models (about 3 GB). After that, starting takes
-about half a minute, and each sentence a few seconds on a laptop CPU.
+The first start downloads the three models (about 3 GB). After that, starting takes about
+half a minute, and each sentence takes a few seconds on a laptop CPU.
 """
 
 import ast              # reads Python code as a tree, so we can keep only some lines of a cell
@@ -86,8 +86,8 @@ CODE_CELLS = [(number, "".join(cell["source"])) for number, cell in enumerate(CE
 
 
 def find_cell(marker):
-    """Find the one code cell that contains this piece of text. Stop with a clear message if
-    it's missing or appears more than once (that means someone changed the notebook)."""
+    """Find the one code cell that contains this piece of text. If it's missing or appears
+    more than once, someone changed the notebook, so stop with a clear message."""
     found = [(number, source) for number, source in CODE_CELLS if marker in source]
     if len(found) != 1:
         raise RuntimeError(f"Expected exactly 1 notebook cell containing {marker!r}, found {len(found)}. "
@@ -176,10 +176,10 @@ ONE_AT_A_TIME = threading.Lock()   # one sentence at a time keeps memory low
 
 
 def translate_and_record(mandarin, speaker, listener, formal):
-    """Call the notebook's translate_one(). It prints its answers; to show them as cards we
-    also need them as values. translate_one() looks up translate() and pick() by name each
-    time it runs, so for this one call we put in versions that do exactly the same thing
-    and also write down what they returned. Afterwards we put the real ones back."""
+    """Call the notebook's translate_one(). It prints its answers, but to show them as cards
+    we need them as values too. translate_one() looks up translate() and pick() by name each
+    time it runs, so for this one call we swap in versions that do exactly the same thing
+    and also write down what they return. Afterwards we put the real ones back."""
     real_translate, real_pick = NB["translate"], NB["pick"]
     translations, picks = [], []
 
@@ -394,7 +394,7 @@ with gr.Blocks(title="Lost in Translation", css=CSS, js=FORCE_LIGHT,
                theme=gr.themes.Soft(primary_hue="indigo", text_size=gr.themes.sizes.text_lg)) as demo:
     gr.Markdown("# Lost in Translation", elem_id="title")
     gr.Markdown("Mandarin → Serbian that keeps who's talking: the speaker's gender, the listener's "
-                "gender and formality. **A prototype**, built for a 48-hour contest.", elem_id="subtitle")
+                "gender and formality. **A prototype** we built in a 48-hour contest.", elem_id="subtitle")
 
     with gr.Row(equal_height=False):
         with gr.Column(scale=3):
@@ -442,9 +442,9 @@ if __name__ == "__main__":
     print("Loading the notebook's code and the three models (the page opens meanwhile)...")
     threading.Thread(target=load_notebook_code, daemon=True).start()
     # On a laptop: no public link; the page is only at http://127.0.0.1:7860.
-    # In Colab: the page runs on Google's computer, so your browser can't reach it directly.
-    # share=True makes Gradio print a temporary public link (ending in .gradio.live, works for
-    # about 72 hours) that you open in a new tab. Anyone with that link can use the page.
+    # In Colab the page runs on Google's computer, so your browser can't reach it directly.
+    # share=True makes Gradio print a temporary public link (ending in .gradio.live, it lasts
+    # about 72 hours) to open in a new tab. Anyone with that link can use the page.
     in_colab = "google.colab" in sys.modules
     try:
         demo.queue().launch(share=in_colab, show_api=False)
