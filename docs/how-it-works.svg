@@ -1,92 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="1220" viewBox="0 0 860 1220" role="img" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="1250" viewBox="160 8 1180 1250" role="img" font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
 <title>Flowchart of how the picker chooses a Serbian translation</title>
-<desc>Start. Input: a Mandarin sentence and who is talking. NLLB writes 32 Serbian options, most likely first. Take the next option. Find the helper word: sam (I am) for the speaker, si (you are) for the listener. Read the endings: -o or -ao for a man, -la for a woman. Read the words for "you": Vi, Vaš, ste formal; ti, tvoj, verbs in -š casual. Decision: do the labels fit? Yes: keep this option (37 of 40 test sentences). No: decision: options left? Yes: take the next option. No: repair the endings with the rule table. Decision: fits now? Yes: use the repaired sentence (2 of 40). No: use the top answer with a "had to guess" warning (1 of 40). Output: the Serbian translation. End.</desc>
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1L9 5L1 9z" fill="#1F1F1F"/></marker></defs>
-<rect width="860" height="1220" fill="#FFFFFF"/>
+<desc>The user enters a Mandarin sentence and sets the speaker gender, listener gender and formality. NLLB writes 32 Serbian translations, ranked from most to least likely. Take one option, starting with the most likely. Labels fit (speaker, listener, formal)? Yes: use this translation. No: sentences left out of the 32? Yes: take the next option. No: repair the best option. Labels fit now? Yes: use the repaired translation. No: use the best option with a "had to guess" warning. The Serbian translation is shown to the user. End.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1L10 5L0 9z" fill="#1A1A1A"/></marker></defs>
+<rect x="160" y="8" width="1180" height="1250" fill="#FFFFFF"/>
 
-<g stroke="#1F1F1F" stroke-width="1.4" marker-end="url(#a)">
-<line x1="300" y1="64" x2="300" y2="84"/>
-<line x1="300" y1="142" x2="300" y2="162"/>
-<line x1="300" y1="218" x2="300" y2="240"/>
-<line x1="300" y1="296" x2="300" y2="318"/>
-<line x1="300" y1="374" x2="300" y2="396"/>
-<line x1="300" y1="452" x2="300" y2="474"/>
-<line x1="300" y1="530" x2="300" y2="552"/>
-<line x1="410" y1="604" x2="558" y2="604"/>
-<line x1="300" y1="654" x2="300" y2="678"/>
-<path d="M190 728 H60 V269 H108"/>
-<line x1="300" y1="776" x2="300" y2="800"/>
-<line x1="300" y1="856" x2="300" y2="878"/>
-<line x1="410" y1="930" x2="558" y2="930"/>
-<line x1="300" y1="980" x2="300" y2="1004"/>
-<line x1="300" y1="1060" x2="300" y2="1080"/>
-<path d="M790 604 H824 V1109 H482"/>
-<line x1="300" y1="1136" x2="300" y2="1156"/>
+<g stroke="#1A1A1A" stroke-width="1.3" fill="none" marker-end="url(#a)">
+<line x1="529" y1="126" x2="529" y2="151"/>
+<line x1="529" y1="249" x2="529" y2="275"/>
+<line x1="529" y1="359" x2="529" y2="379"/>
+<line x1="753" y1="445" x2="909" y2="445"/>
+<line x1="529" y1="509" x2="529" y2="528"/>
+<path d="M305 594 H178 V318 H299"/>
+<line x1="529" y1="658" x2="529" y2="677"/>
+<line x1="529" y1="761" x2="529" y2="781"/>
+<line x1="753" y1="847" x2="909" y2="847"/>
+<line x1="529" y1="911" x2="529" y2="929"/>
+<line x1="529" y1="1013" x2="529" y2="1032"/>
+<path d="M1230 445 H1326 V1088 H748"/>
+<line x1="529" y1="1142" x2="529" y2="1161"/>
 </g>
-<line x1="790" y1="930" x2="824" y2="930" stroke="#1F1F1F" stroke-width="1.4"/>
+<line x1="1230" y1="847" x2="1326" y2="847" stroke="#1A1A1A" stroke-width="1.3"/>
 
-<g stroke="#1F1F1F" stroke-width="1.4" fill="#FFFFFF">
-<rect x="230" y="24" width="140" height="40" rx="20"/>
-<polygon points="130,86 490,86 470,142 110,142"/>
-<rect x="110" y="164" width="380" height="54"/>
-<rect x="110" y="242" width="380" height="54"/>
-<rect x="110" y="320" width="380" height="54"/>
-<rect x="110" y="398" width="380" height="54"/>
-<rect x="110" y="476" width="380" height="54"/>
-<polygon points="300,554 410,604 300,654 190,604"/>
-<rect x="560" y="577" width="230" height="54"/>
-<polygon points="300,680 410,728 300,776 190,728"/>
-<rect x="110" y="802" width="380" height="54"/>
-<polygon points="300,880 410,930 300,980 190,930"/>
-<rect x="560" y="903" width="230" height="54"/>
-<rect x="110" y="1006" width="380" height="54"/>
-<polygon points="130,1082 490,1082 470,1136 110,1136"/>
-<rect x="230" y="1158" width="140" height="40" rx="20"/>
+<g stroke="#1A1A1A" stroke-width="1.3">
+<rect x="281" y="18" width="497" height="108" rx="18" fill="#DCEAD5"/>
+<rect x="301" y="153" width="458" height="96" fill="#D5E2F2" stroke-width="2"/>
+<rect x="301" y="277" width="457" height="82" fill="#D5E2F2"/>
+<polygon points="305,445 529,381 753,445 529,509" fill="#F8E5D0"/>
+<rect x="911" y="397" width="319" height="95" fill="#D5E2F2"/>
+<polygon points="305,594 529,530 753,594 529,658" fill="#F8E5D0"/>
+<rect x="301" y="679" width="457" height="82" fill="#D5E2F2"/>
+<polygon points="305,847 529,783 753,847 529,911" fill="#F8E5D0"/>
+<rect x="911" y="799" width="319" height="95" fill="#D5E2F2"/>
+<rect x="301" y="931" width="457" height="82" fill="#D5E2F2"/>
+<polygon points="328,1034 758,1034 733,1142 301,1142" fill="#DCD5E8"/>
+<rect x="411" y="1163" width="237" height="82" rx="18" fill="#DCEAD5"/>
 </g>
 
-<g text-anchor="middle" dominant-baseline="central">
-<g fill="#1F1F1F">
-<text x="300" y="44">Start</text>
-<text x="300" y="105">Mandarin sentence + who's talking</text>
-<text x="300" y="182">NLLB writes 32 Serbian options</text>
-<text x="300" y="260">Take the next option</text>
-<text x="300" y="338">Find the helper word</text>
-<text x="300" y="416">Read the endings next to it</text>
-<text x="300" y="494">Read the words for “you”</text>
-<text x="300" y="595">Labels fit?</text>
-<text x="675" y="595">Keep this option</text>
-<text x="300" y="719">Options left?</text>
-<text x="300" y="820">Repair the endings</text>
-<text x="300" y="921">Fits now?</text>
-<text x="675" y="921">Use the repaired sentence</text>
-<text x="300" y="1024">Use the top answer + warning</text>
-<text x="300" y="1101">Serbian translation</text>
-<text x="300" y="1178">End</text>
-</g>
-<g fill="#666666" font-size="13">
-<text x="300" y="125">e.g. 我已经检查过了 · speaker: woman</text>
-<text x="300" y="202">ranked from most to least likely</text>
-<text x="300" y="280">starting with the most likely</text>
-<text x="300" y="358">sam (I am) → speaker · si (you are) → listener</text>
-<text x="300" y="436">-o, -ao → man (proverio) · -la → woman (proverila)</text>
-<text x="300" y="514">Vi, Vaš, ste → formal · ti, tvoj, -š verbs → casual</text>
-<text x="300" y="613">speaker, listener, formal</text>
-<text x="675" y="615">37 of 40 test sentences</text>
-<text x="300" y="737">out of the 32</text>
-<text x="300" y="840">proverio → proverila · ti → Vi · tvoj → Vaš</text>
-<text x="300" y="939">check again</text>
-<text x="675" y="941">2 of 40 test sentences</text>
-<text x="300" y="1044">flagged “had to guess” · 1 of 40</text>
-<text x="300" y="1120">shown to the user</text>
-</g>
+<g fill="#1A1A1A" dominant-baseline="central">
+<text x="529" y="49" font-size="29">Mandarin sentence</text>
+<text x="529" y="80" font-size="17">The user enters a Mandarin sentence and sets the</text>
+<text x="529" y="104" font-size="17">speaker gender, listener gender, and formality</text>
+<text x="529" y="190" font-size="23">NLLB writes 32 Serbian translations</text>
+<text x="529" y="217" font-size="17">Sentences are ranked from most to least likely</text>
+<text x="529" y="307" font-size="23">Take one option</text>
+<text x="529" y="333" font-size="17">Start with the most likely, verify labels</text>
+<text x="529" y="421" font-size="23">Labels fit?</text>
+<text x="529" y="447" font-size="17">Speaker, listener,</text>
+<text x="529" y="471" font-size="17">formal</text>
+<text x="1070" y="445" font-size="23">Use this translation</text>
+<text x="529" y="582" font-size="23">Sentences left?</text>
+<text x="529" y="608" font-size="17">Out of the 32</text>
+<text x="529" y="710" font-size="23">Repair best option</text>
+<text x="529" y="735" font-size="17">Make slight adjustments to labels</text>
+<text x="529" y="847" font-size="23">Labels fit now?</text>
+<text x="1070" y="833" font-size="23">Use the repaired</text>
+<text x="1070" y="862" font-size="23">translation</text>
+<text x="529" y="962" font-size="23">Use the best option</text>
+<text x="529" y="987" font-size="17">Add a warning: “had to guess”</text>
+<text x="529" y="1078" font-size="31">Serbian translation</text>
+<text x="529" y="1107" font-size="17">Shown to the user</text>
+<text x="529" y="1204" font-size="31">End</text>
 </g>
 
-<g fill="#1F1F1F" font-size="13">
-<text x="420" y="594">Yes</text>
-<text x="310" y="667">No</text>
-<text x="150" y="718">Yes</text>
-<text x="310" y="789">No</text>
-<text x="420" y="920">Yes</text>
-<text x="310" y="993">No</text>
+<g fill="#1A1A1A" font-size="17" text-anchor="start" dominant-baseline="central">
+<text x="756" y="431">Yes</text>
+<text x="563" y="520">No</text>
+<text x="275" y="581">Yes</text>
+<text x="563" y="665">No</text>
+<text x="756" y="833">Yes</text>
+<text x="563" y="916">No</text>
 </g>
 </svg>
