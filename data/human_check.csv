@@ -1,0 +1,46 @@
+id,picker_output,direct_output,baseline_output,picker_meaning,direct_meaning,baseline_meaning,picker_endings,direct_endings,baseline_endings
+t04,Bio sam previše umoran danas.,Preumorna sam danas.,Tako sam umoran danas.,y,n,y,y,n,y
+t05,Ja sam zaboravila da nosim šapku.,Zaboravio sam da nosim šapku.,Zaboravio sam kacigu.,n,n,y,y,n,n
+t07,Ja sam se promenila u radno odelo.,Ja sam se promenio u radnom haljinu.,Promenio sam uniformu.,n,n,y,y,n,n
+t08,Ja sam juče bolestan.,Ja sam juče bolestan.,Juče sam se razboleo.,n,n,y,y,y,y
+t09,Ja sam obavestila vozača.,Ja sam obavestio vozača.,Obavestio sam vozača.,y,y,y,y,n,n
+t10,Ja sam spreman.,Ja sam spreman.,Spreman sam.,y,y,y,y,y,y
+t11,Ja sam završila čišćenje.,Ja sam sve čistio.,Završio sam inventar.,n,n,y,y,n,n
+t12,Ja sam prošle nedelje otišao u sedište za obuku.,Ja sam prošle nedelje otišao u sedište za obuku.,Otišao sam u štab prošle nedelje na obuku.,y,y,y,y,y,y
+t13,Nisam čula jasno.,Ne razumem.,Nisam te jasno čuo.,y,n,y,y,n,n
+t14,Ja sam zaključio vrata skladišta.,Ja sam zaključio vrata skladišta.,Zaključao sam vrata skladišta.,n,n,y,y,y,y
+t15,Bila sam kasno ovog jutra.,Ja sam opozdao ovo jutro.,Kasnim jutros.,y,n,y,y,n,n
+t16,Upisao sam podatke u sistem.,Upisao sam podatke u sistem.,Uneo sam podatke u sistem.,y,y,y,y,y,y
+t17,Samo sam jeo ručak.,Samo sam jeo ručak.,Upravo sam završio ručak.,n,n,y,y,y,y
+t18,Ja sam popravila tu mašinu.,Ja sam popravio tu mašinu.,Popravio sam tu mašinu.,y,y,y,y,n,n
+t19,Jesi li jela ručak?,Jesi li jela ručak?,Jesi li ručao?,y,y,y,y,y,n
+t20,Da li si umoran?,Da li si umorna?,Jesi li umoran?,y,y,y,n,n,y
+t21,Da li si svalila ѓubre?,Da li si svalio ѓubre?,Da li si izneo smeće?,n,n,y,y,n,n
+t24,Da li si govorio sa direktorom juče?,Da li ste razgovarali sa direktorom juče?,Da li ste razgovarali sa nadzornikom juče?,y,y,y,y,n,n
+t27,Možete li doći rano ujutru?,Možete li doći rano ujutru?,Možeš li doći ranije sutra?,n,n,y,y,y,n
+t28,Možeš li doći sutra rano?,Možeš li doći sutra rano?,Možeš li doći ranije sutra?,y,y,y,y,y,y
+t29,Molim vas da potpisate ovde.,Molim vas da potpisate ovde.,"Molim vas, potpišite ovde.",y,y,y,y,y,y
+t30,"Ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne","Ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne, ne",Odmori se malo.,n,n,y,n,n,y
+t31,Znate li gde su ključevi skladišta?,Znate li gde su ključevi skladišta?,Znaš li gde je ključ od skladišta?,y,y,y,y,y,n
+t32,Da li ćeš voziti vinkar?,Da li ćete voziti vinkar?,Možeš li da voziš viljuškaš?,n,n,y,y,n,y
+t34,Kada ideš na posao popodne?,Kakav je vaš posao u 12 sati?,Kada odlaziš popodne?,n,n,y,y,n,y
+t35,Vaš paket je u drvovoj sobi.,Vaš paket je u drvovoj sobi.,Paket ti je u sobi vratara.,n,n,y,y,y,n
+t36,Tvoja tabela je ovde.,Tvoja tabela je ovde.,Evo ti radna karta.,n,n,n,y,y,y
+t37,Poslala sam vam.,Poslao sam vam.,Poslao sam ti ga.,y,y,y,y,n,n
+t38,Već sam ti je poslala.,Poslao sam te.,Već sam ti ga poslao.,y,n,y,y,n,n
+t40,Pomogao sam ti da preneseš kutiju.,Pomogao sam ti da preneseš kutiju.,Pomogao sam ti da pomeriš slučaj.,y,y,n,y,y,y
+t42,Već sam ti govorila.,Već sam ti govorio.,Već sam ti rekao.,y,y,y,y,n,n
+t43,Da li ste videli ovaj izveštaj?,Da li ste videli ovaj izveštaj?,Da li ste pročitali ovaj izveštaj?,y,y,y,y,y,y
+t44,Da li si videla ovaj izveštaj?,Da li ste videli ovaj izveštaj?,Da li ste pročitali ovaj izveštaj?,y,y,y,y,n,n
+t45,Da li ste potpisali da primite tu partiju?,Da li ste potpisali da primite tu partiju?,Da li ste potpisali za pošiljku?,y,y,y,y,y,y
+t46,Da li si potpisao da primiš grupu?,Da li ste potpisali da primite te grupe?,Da li ste potpisali za pošiljku?,n,n,y,y,n,n
+t47,Da li ste već u fabrici?,Da li ste već u fabrici?,Da li ste stigli u fabriku?,y,y,y,y,y,y
+t48,Da li si došla do fabrike?,Da li si već u fabrici?,Da li ste stigli u fabriku?,y,y,y,y,n,n
+t50,Da li ste obavestili drugih direktora?,Da li ste obavestili drugih direktora?,Da li ste obavestili druge vođe tima?,n,n,y,y,y,y
+t51,Da li ste zaboravili karticu?,Da li ste zaboravili karticu?,Jesi li zaboravio da udariš kartu?,n,n,y,y,y,n
+t53,Da li si povređena?,Da li si povređen?,Jesi li povređen?,y,y,y,y,n,n
+t55,Mašina na liniji 3 ponovo je zaustavena.,Mašina na liniji 3 ponovo je zaustavena.,Mašina na trećoj liniji se ponovo zaustavila.,y,y,y,y,y,y
+t56,Sastanao sam u 8:00 ujutru.,Sastanao sam u 8:00 ujutru.,Sutra u 8 sati održaće se sastanak.,n,n,y,n,n,y
+t57,Gruza je došla u 14:00.,Gruza je došla u 14:00.,Kombi stiže u 14:00.,n,n,n,y,y,y
+t58,Ne može se pušiti u skladištu.,Ne može se pušiti u skladištu.,Nema pušenja u skladištu.,y,y,y,y,y,y
+t59,Ovi delovi imaju probleme sa kvalitetom.,Ovi delovi imaju probleme sa kvalitetom.,Rezervni delovi imaju kvalitetne probleme.,y,y,n,y,y,y

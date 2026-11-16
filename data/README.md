@@ -86,3 +86,12 @@ It lists problems (wrong column names, empty cells, values that aren't allowed, 
 ## Source and credit
 
 The sentences are written by our team: the Mandarin was drafted with an AI tool and checked and corrected by a native Mandarin speaker; the Serbian was written by a native Serbian speaker from the English meaning and labels, without any translation tool.
+
+## The human check: `human_check.csv`
+
+`human_check.csv` holds our native Serbian speaker's hand grades of the 45 **test** rows (same ids as `test_sentences.csv`). For each row it has the exact Serbian answer of all three systems (`picker_output` for ours, `direct_output` for NLLB direct, `baseline_output` for the route through English), copied from the notebook's saved test outputs, and two yes/no grades per system:
+
+- `*_meaning`: `y` if the Serbian means what the English meaning says, `n` if not.
+- `*_endings`: `y` if the speaker's gender, the listener's gender and the formality are right, `n` if not. On the 5 `control` rows there is no ending to test, so the notebook doesn't count this column there.
+
+Our native Serbian speaker graded every answer by hand in a shared spreadsheet, without any translation tool and without the notebook's `detect()` reader. We copied the grades into this file unchanged. The notebook loads it from `https://raw.githubusercontent.com/proelium27/veritas-ai-hackathon/main/data/human_check.csv` (section 7.1).
