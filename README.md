@@ -8,6 +8,8 @@ For a Mandarin speaker writing to Serbian colleagues at work: type a Mandarin se
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/proelium27/veritas-ai-hackathon/blob/main/notebook/model.ipynb)
 
+**Demo video (2 min):** [watch on YouTube](https://www.youtube.com/watch?v=aC2AZEAdeUs)
+
 Click **Runtime → Run all**. No sign-in, keys or uploads; a GPU is optional. The first run in a fresh Colab session also downloads about 3 GB of models (a few minutes); after that it takes about 1.5 minutes on a CPU. **Demo app** (optional): `python app/demo.py` ([how to run it](docs/details.md#demo-app)).
 
 ## The problem
